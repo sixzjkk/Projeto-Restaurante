@@ -1,11 +1,59 @@
 import bcryptjs from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 import { PrismaClient } from '@prisma/client';
 
 const client = new PrismaClient();
 
 class UserController {
+    static async loginUser (req, res) {
+        const { email, password } = req.body;
+
+        const user = await client.user.findUnique({
+            where: {
+                email
+            }
+        });
+
+        if (!user) {
+            return res.json({
+                message: 'User not found',
+                error: true
+            })
+        }
+
+        const correctPassword = bcryptjs.compareSync(password, user.password);
+
+        if (!correctPassword) {
+            return res.json({
+                message: 'Incorrect password',
+                error: true
+            });
+        }
+
+        const token = jwt.sign({id: user.id}, process.env.SECRET_KEY, {expiresIn: '2h'});
+
+        return res.json({
+            message: 'Authenticated!',
+            error: false,
+            token
+        });
+    }
+
     static async registerUser (req, res) {
         const { name, email, password } = req.body;
+
+        const possibleUser = await client.user.findUnique({
+            where: {
+                email
+            }
+        });
+
+        if (possibleUser) {
+            return res.json({
+                message: 'Email already registered',
+                error: true
+            })
+        }
 
         const salt = bcryptjs.genSaltSync(8);
         const hashPassword = bcryptjs.hashSync(password, salt);
@@ -17,7 +65,7 @@ class UserController {
             });
         }
 
-        await client.user.create({
+        const user = await client.user.create({
             data: {
                 name,
                 email,
@@ -25,10 +73,12 @@ class UserController {
             }
         });
 
-        res.json({
+        const token = jwt.sign({id: user.id}, process.env.SECRET_KEY, {expiresIn: '2h'});
+
+        return res.json({
             message: 'Registration successful',
             error: false,
-            token: ''
+            token 
         }); 
     }
 }
