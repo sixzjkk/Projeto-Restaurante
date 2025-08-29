@@ -17,21 +17,15 @@ export default function Register() {
                     email,
                     password
                 })
-            });
+            }).json();
 
-            const result = await res.json();
-
-            if (result.error) {
-                throw new Error(result.message);
+            if (res.error) {
+                throw new Error(res.message);
             }
 
         } catch (err) {
             console.error(err);
         }
-
-        setName('');
-        setEmail('');
-        setPassword('');
     }
 
     return (
