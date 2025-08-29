@@ -1,35 +1,18 @@
 import { useState } from 'react';
+import apiUser from '../api/apiUser';
 
 export default function Register() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState();
     
-    const submitRegisterUser = async (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-
-        try {
-            const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/register`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name,
-                    email,
-                    password
-                })
-            }).json();
-
-            if (res.error) {
-                throw new Error(res.message);
-            }
-
-        } catch (err) {
-            console.error(err);
-        }
+        await apiUser({name, email, password, functionUser: 'register'});
     }
 
     return (
-        <form onSubmit={submitRegisterUser}>
+        <form onSubmit={handleSubmit}>
             <input
                 placeholder='Name: '
                 type='string'

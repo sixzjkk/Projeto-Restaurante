@@ -1,35 +1,17 @@
 import { useState } from 'react';
+import apiUser from '../api/apiUser';
 
 export default function LoginUser () {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const submitLoginUser = async (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-
-        try {
-            const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    email,
-                    password
-                })
-            }).json();
-
-            if (res.error) {
-                throw new Error(res.message);
-            }
-
-        } catch (err) {
-            console.error(err);
-        }
-
-        
+        const res = await apiUser({email, password, functionUser: 'login'});
     }
 
     return (
-        <form onSubmit={submitLoginUser}>
+        <form onSubmit={handleSubmit}>
             <input
                 placeholder='E-mail: '
                 type='email'
