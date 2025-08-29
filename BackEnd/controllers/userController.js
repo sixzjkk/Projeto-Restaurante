@@ -79,7 +79,7 @@ class UserController {
             message: 'Registration successful',
             error: false,
             token 
-        }); 
+        });
     }
 }
 
