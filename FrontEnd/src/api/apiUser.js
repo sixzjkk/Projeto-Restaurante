@@ -1,4 +1,4 @@
-export default async function apiUser ({name = none, email, password, functionUser}) {
+export default async function apiUser ({name = undefined, email, password, functionUser}) {
     try {
             const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/${functionUser}`, {
                 method: 'POST',
