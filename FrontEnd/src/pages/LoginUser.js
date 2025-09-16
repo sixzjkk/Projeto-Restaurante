@@ -1,13 +1,16 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import apiUser from '../api/apiUser';
 
-export default function LoginUser () {
+export default function LoginUser() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const res = await apiUser({email, password, functionUser: 'login'});
+        const res = await apiUser({ email, password, functionUser: 'login', navigate });
     }
 
     return (

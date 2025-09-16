@@ -1,14 +1,23 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import apiUser from '../api/apiUser';
 
 export default function Register() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState();
-    
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    const navigate = useNavigate();
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await apiUser({name, email, password, functionUser: 'register'});
+        if (password == confirmPassword) {
+            await apiUser({ name, email, password, confirmPassword, functionUser: 'register', navigate });  
+        } else {
+            alert('Passwords do not match');
+        }
+        
     }
 
     return (
@@ -30,6 +39,12 @@ export default function Register() {
                 type='password'
                 onChange={event => setPassword(event.target.value)}
                 value={password}
+            />
+            <input
+                placeholder='Confirm Password: '
+                type='password'
+                onChange={event => setConfirmPassword(event.target.value)}
+                value={confirmPassword}
             />
             <button>Register</button>
         </form>

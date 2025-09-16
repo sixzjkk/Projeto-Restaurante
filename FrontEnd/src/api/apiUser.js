@@ -1,4 +1,4 @@
-export default async function apiUser ({name = undefined, email, password, functionUser}) {
+export default async function apiUser ({name = undefined, email, password, functionUser, navigate}) {
     try {
             const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/${functionUser}`, {
                 method: 'POST',
@@ -8,15 +8,19 @@ export default async function apiUser ({name = undefined, email, password, funct
                     email,
                     password
                 })
-            }).json();
+            })
 
-            if (res.error) {
-                throw new Error(res.message);
+            const data = await res.json();
+
+            if (data.error) {
+                throw new Error(data.message);
             }
 
-            return res.token;
+            navigate('/');
+
+            return data.token;
         } catch (err) {
             console.error(err);
-            return err;
+            return err; 
         }
 }
