@@ -1,0 +1,45 @@
+.form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.input {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    padding-left: 10px;
+    margin-bottom: 30px;
+    width: 250px;
+    height: 35px;
+    border: 1px solid #FFFFFF;
+    background-color: #00000000;
+    border-radius: 2px;
+    color: #FFF;
+}
+
+.buttonReservation {
+    box-sizing: border-box;
+    width: 150px;
+    height: 25px;
+    background: linear-gradient(90.88deg, rgba(170, 52, 13, 0.85) -4.95%, rgba(170, 52, 13, 0) 105.66%);
+    border: 0.5px solid #B62D00;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Proza Libre", sans-serif;
+    cursor: pointer;
+    color: #FFF;
+}
+
+.buttonReservation:hover {
+    background: linear-gradient(90.88deg, rgb(170, 52, 13) -4.95%, rgba(170, 52, 13, 0.256) 105.66%);
+}
+
+.borderButton {
+    border: 0.5px solid #FFFFFF;
+    padding: 5px;
+    border-radius: 2px;
+    height: 25px;
+}
