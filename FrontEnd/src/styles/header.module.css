@@ -1,0 +1,82 @@
+header {
+    background-color: #120901;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    margin-left: 75px;
+    height: 35px;
+}
+
+.menu {
+    display: flex;
+ }
+
+.textMenu {
+    font-family: "Proza Libre", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 20px 10px 20px 20px;
+    color: #ffffffc2;
+    cursor: pointer;
+}
+
+.textMenu:hover {
+    color:#fff
+}
+
+.auth {
+    margin-right: 75px;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+}
+
+.buttonRegister, .buttonLogin {
+    box-sizing: border-box;
+    width: 100px;
+    height: 30px;
+    border: 0.5px solid #B62D00;
+    cursor: pointer;
+}
+
+.buttonRegister {
+    background: linear-gradient(90.88deg, rgba(170, 52, 13, 0.85) -4.95%, rgba(170, 52, 13, 0) 105.66%);
+}
+
+.buttonLogin {
+    background: linear-gradient(90.88deg, rgba(170, 52, 13, 0.032) -4.95%, rgba(170, 52, 13, 0) 105.66%);
+}
+
+.buttonRegister:hover {
+    background: linear-gradient(90.88deg, rgb(170, 52, 13) -4.95%, rgba(170, 52, 13, 0.256) 105.66%);
+}
+
+.buttonLogin:hover {
+    background: linear-gradient(90.88deg, rgba(170, 52, 13, 0.247) -4.95%, rgba(170, 52, 13, 0.115) 105.66%);
+}
+
+.borderButton {
+    border: 0.5px solid #E7B7A8;
+    padding: 5px;
+    border-radius: 2px;
+    margin-left: 30px;
+}
+
+a {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Proza Libre", sans-serif;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 12px;
+}

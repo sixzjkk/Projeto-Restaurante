@@ -1,0 +1,113 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.background {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: #FFF;
+}
+
+
+.line, .lineRegister {
+    width: 104px;
+    height: 3px;
+    background: #AA340D;
+    margin-top: -120px;
+}
+
+.lineRegister {
+    width: 154px;
+    margin-top: 40px;
+}
+
+.title {
+    text-align: center;
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 69px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 438px;
+    height: auto;
+    padding: 50px 0px 20px 0px;
+    border: 1px solid #FFFFFF;
+    border-radius: 2px;
+}
+
+.input {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    padding-left: 10px;
+    margin-bottom: 30px;
+    width: 334px;
+    height: 50px;
+    border: 1px solid #FFFFFF;
+    background-color: #00000000;
+    border-radius: 2px;
+    color: #FFF;
+}
+
+.input::placeholder {
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-family: "Proza Libre", sans-serif;
+}
+
+.buttonLoginRegister {
+    box-sizing: border-box;
+    width: 324px;
+    height: 40px;
+    background: linear-gradient(90.88deg, rgba(170, 52, 13, 0.85) -4.95%, rgba(170, 52, 13, 0) 105.66%);
+    border: 0.5px solid #B62D00;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Proza Libre", sans-serif;
+    cursor: pointer;
+    color: #FFF;
+}
+
+.buttonLoginRegister:hover {
+    background: linear-gradient(90.88deg, rgb(170, 52, 13) -4.95%, rgba(170, 52, 13, 0.256) 105.66%);
+}
+
+.borderButton {
+    border: 0.5px solid #FFFFFF;
+    padding: 5px;
+    border-radius: 2px;
+}
+
+.textLoginRegister {
+    font-family: "Proza Libre", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.link {
+    color: #B62D00;
+    text-transform: uppercase;
+    font-weight: 600;
+}

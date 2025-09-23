@@ -1,0 +1,16 @@
+footer {
+    background-color: #120901;
+    height: 70px;
+    width: 100%;
+    color: #ffffffa4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+}
+
+.textFooter {
+    font-family: "Proza Libre";
+    font-size: 20px;
+    text-align: center;
+}
