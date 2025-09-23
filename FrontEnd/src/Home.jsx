@@ -1,6 +1,7 @@
 import Header from './components/Header';
 import Footer from './components/Footer';
 import AboutUs from './components/AboutUs';
+import Culinary from './components/Culinary';
 import { Link } from 'react-router-dom';
 import styles from './styles/home.module.css';
 import img from './assets/image-home.png';
@@ -34,6 +35,7 @@ export default function App() {
                     </div>
                 </div>
             <AboutUs />
+            <Culinary />
             </div>
             <Footer />
         </>

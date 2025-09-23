@@ -1,0 +1,82 @@
+.parent {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 0; /* colado */
+    width: 100%;
+    height: 100%;
+}
+
+.div1 {
+    grid-column: span 3 / span 3;
+    grid-row: span 4 / span 4;
+}
+
+.div2 {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 4;
+}
+
+.div3 {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 4;
+    grid-row-start: 3;
+}
+
+.div4 {
+    grid-column: span 3 / span 3;
+    grid-row: span 2 / span 2;
+    grid-column-start: 6;
+    grid-row-start: 1;
+}
+
+.div5 {
+    grid-column: span 3 / span 3;
+    grid-row: span 2 / span 2;
+    grid-column-start: 6;
+    grid-row-start: 3;
+}
+
+/* estilos internos */
+.imageCLientes,
+.imageRestaurante,
+.div1 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.containerReceitasText {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+}
+
+.line {
+    width: 126px;
+    height: 3px;
+    background: #AA340D;
+    margin-top: 15px;
+}
+
+.textCulinaria {
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 47px;
+    line-height: 57px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.iconReceitas,
+.iconSino {
+    width: 40px;
+}
