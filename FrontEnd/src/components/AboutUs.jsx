@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
 import styles from '../styles/aboutus.module.css';
 import imgChef from '../assets/image-chef.png';
 import imgStar from '../assets/image-star.png';
 import imgChefCozinha from '../assets/image-chefCozinha.png';
 
-export default function App() {
+export default function AboutUs() {
     return (
         <div className={styles.containerPrincipalSegundo}>
             <h1 className={styles.titleAboutUs}>Sobre Nós</h1>

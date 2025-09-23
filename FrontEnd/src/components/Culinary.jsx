@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styles from '../styles/culinary.module.css';
 import imgCozinha from '../assets/image-cozinha.png';
 import imgClientes from '../assets/image-clientes.png';
@@ -6,16 +5,16 @@ import iconReceitas from '../assets/icon-receitas.png';
 import iconSino from '../assets/icon-sino.png';
 import imgRestaurante from '../assets/image-restaurante.png';
 
-export default function App() {
+export default function Culinary() {
     return (
-        <div className={styles.parent}>
-            <img className={styles.div1} src={imgCozinha} />
+        <div className={styles.gridLayout}>
+            <img className={styles.cozinhaImage} src={imgCozinha} />
 
-            <div className={styles.div2}>
-                <img className={styles.imageCLientes} src={imgClientes} />
+            <div className={styles.clientesImage}>
+                <img src={imgClientes} />
             </div>
 
-            <div className={styles.div3}>
+            <div className={styles.receitasText}>
                 <div className={styles.containerReceitasText}>
                     <img className={styles.iconReceitas} src={iconReceitas} />
                     <div className={styles.line}></div>
@@ -25,7 +24,7 @@ export default function App() {
                 </div>
             </div>
 
-            <div className={styles.div4}>
+            <div className={styles.paisaoText}>
                 <div className={styles.containerReceitasText}>
                     <img className={styles.iconSino} src={iconSino} />
                     <div className={styles.line}></div>
@@ -35,8 +34,8 @@ export default function App() {
                 </div>
             </div>
 
-            <div className={styles.div5}>
-                <img className={styles.imageRestaurante} src={imgRestaurante} />
+            <div className={styles.restauranteImage}>
+                <img src={imgRestaurante} />
             </div>
         </div>
     );

@@ -1,54 +1,65 @@
-.parent {
+.gridLayout {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: 0; /* colado */
+    gap: 0;
     width: 100%;
     height: 100%;
 }
 
-.div1 {
+/* imagens */
+.cozinhaImage {
     grid-column: span 3 / span 3;
     grid-row: span 4 / span 4;
-}
-
-.div2 {
-    grid-column: span 2 / span 2;
-    grid-row: span 2 / span 2;
-    grid-column-start: 4;
-}
-
-.div3 {
-    grid-column: span 2 / span 2;
-    grid-row: span 2 / span 2;
-    grid-column-start: 4;
-    grid-row-start: 3;
-}
-
-.div4 {
-    grid-column: span 3 / span 3;
-    grid-row: span 2 / span 2;
-    grid-column-start: 6;
-    grid-row-start: 1;
-}
-
-.div5 {
-    grid-column: span 3 / span 3;
-    grid-row: span 2 / span 2;
-    grid-column-start: 6;
-    grid-row-start: 3;
-}
-
-/* estilos internos */
-.imageCLientes,
-.imageRestaurante,
-.div1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
+.clientesImage {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 4;
+}
+
+.clientesImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.restauranteImage {
+    grid-column: span 3 / span 3;
+    grid-row: span 2 / span 2;
+    grid-column-start: 6;
+    grid-row-start: 3;
+}
+
+.restauranteImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* blocos de texto */
+.receitasText {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 4;
+    grid-row-start: 3;
+}
+
+.paisaoText {
+    grid-column: span 3 / span 3;
+    grid-row: span 2 / span 2;
+    grid-column-start: 6;
+    grid-row-start: 1;
+}
+
+/* estilos internos */
 .containerReceitasText {
     display: flex;
     align-items: center;
