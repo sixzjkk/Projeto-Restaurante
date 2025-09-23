@@ -109,7 +109,18 @@ strong {
     height: 500px;
 }
 
-.textAboutUs {
+.containerAboutUs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.containerTextAboutUs {
+    display: flex;
+    flex-direction: column;
+}
+
+.titleAboutUs {
     position: absolute;
     font-family: 'Proza Libre';
     font-style: normal;
@@ -122,3 +133,49 @@ strong {
     color: rgba(182, 45, 0, 0.1);
 }
 
+.subtitleAboutUs {
+    font-family: 'Proza Libre';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 120px;
+    text-transform: uppercase;
+    color: #110901;
+    margin-top: 170px;
+    text-align: center;
+}
+
+.textAboutUs {
+    font-family: 'Proza Libre';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 29px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: rgba(22, 13, 6, 0.5);
+}
+
+.imageStar {
+    margin-top: -60px;
+    width: 200px;
+    display: flex;
+    margin-left: 75px;
+}
+
+.imageChef {
+    margin-top: 270px;
+    height: auto;
+    margin-left: 75px;
+    width: 400px;
+    height: 492px;
+}
+
+.imageChefCozinha {
+    margin-top: 55px;
+    height: auto;
+    margin-right: 75px;
+    width: 400px;
+    height: 492px;
+}
