@@ -13,3 +13,5 @@ app.use('/auth', userRoutes);
 app.listen(port, () => {
     console.log(`http://localhost:${port}`);
 });
+
+export default app;
