@@ -4,7 +4,7 @@ import bgImg from '../assets/background-fire.png';
 
 export default function Reservation() {
     return (
-        <div className={styles.background} style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${bgImg})` }}>
+        <div id='reservation' className={styles.background} style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${bgImg})` }}>
             <div className={styles.line}></div>
             <h1 className={styles.titleReservation}>Reserve uma mesa</h1>
             <form className={styles.form}>

@@ -10,7 +10,7 @@ export default function App() {
     return (
         <>
             <Header />
-            <div className={styles.background}>
+            <div id='home' className={styles.background}>
                 <div className={styles.containerPrincipalPrimeiro}>
                     <div className={styles.containerText}>
                         <div className={styles.containerLine}>

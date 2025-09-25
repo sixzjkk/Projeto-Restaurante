@@ -5,7 +5,7 @@ import imgChefCozinha from '../assets/image-chefCozinha.png';
 
 export default function AboutUs() {
     return (
-        <div className={styles.containerPrincipalSegundo}>
+        <div id='aboutUs' className={styles.containerPrincipalSegundo}>
             <h1 className={styles.titleAboutUs}>Sobre Nós</h1>
             <div className={styles.containerAboutUs}>
                 <img className={styles.imageChef} src={imgChef}></img>
