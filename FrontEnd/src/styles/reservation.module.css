@@ -61,14 +61,14 @@
 }
 
 .selectWrapper::after {
-    content: "▼";
+    content: "ᐸ";
     font-size: 12px;
     color: #FFF;
     position: absolute;
-    right: 5px;
+    right: -3px;
     top: 50%;
     pointer-events: none;
-    transform: translateY(-50%);
+    transform: translateY(-50%) rotate(-90deg);
 }
 
 .input[type="date"] {
@@ -96,7 +96,7 @@
     font-size: 14px;
     color: #FFF;
     position: absolute;
-    right: 10px;
+    right: -3px;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;

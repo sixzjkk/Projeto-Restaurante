@@ -17,6 +17,7 @@ export default function LoginUser() {
 
     return (
         <div className={styles.background} style={{  backgroundImage: `linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${bgImg})` }}>
+            <Link className={styles.voltar}to='/'>ᐸ</Link>
             <div className={styles.line}></div>
             <h1 className={styles.title}>Login</h1>
             <form className={styles.form} onSubmit={handleSubmit}>

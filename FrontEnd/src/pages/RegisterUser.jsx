@@ -24,6 +24,7 @@ export default function Register() {
 
     return (
         <div className={styles.background} style={{  backgroundImage: `linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${bgImg})` }}>
+            <Link className={styles.voltar}to='/'>ᐸ</Link>
             <div className={styles.lineRegister}></div>
             <h1 className={styles.title}>Criar Conta</h1>
             <form className={styles.form} onSubmit={handleSubmit}>
