@@ -8,7 +8,6 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   gap: 8px;
-  height: 100vh;
   width: 100%;
   overflow-x: hidden;
 }
@@ -38,7 +37,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  position: relative;
   z-index: 0;
   max-width: 100%;
   display: block;
@@ -79,24 +77,6 @@
   text-transform: uppercase;
 }
 
-.textPrincipal {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 65px;
-  line-height: 120px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
-  margin-top: -10px;
-  position: relative;
-  z-index: 2;
-}
-
-strong {
-  color: #fff;
-  font-size: 85px;
-}
-
 .textIntroducao {
   font-family: 'Proza Libre';
   font-style: normal;
@@ -108,20 +88,41 @@ strong {
   margin-bottom: 240px;
 }
 
-.linePrincipalGosto {
-  position: absolute;
-  width: 290px;
-  height: 34px;
-  left: 300px;
-  top: 290px;
-  background: linear-gradient(91.1deg, #AA340D -0.56%, rgba(170, 52, 13, 0.85) 28.66%, rgba(170, 52, 13, 0.895274) 42.25%, rgba(255, 255, 255, 0.61) 51.13%, rgba(170, 52, 13, 0.78) 61.38%, #AA340D 74.52%, rgba(170, 52, 13, 0) 89.67%);
+.textPrincipal {
+  font-family: 'Cormorant Garamond';
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 4rem); /* responsivo */
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  position: relative;
+  z-index: 2;
 }
 
-.linePrincipalCriatividade {
+strong {
+  color: #fff;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  position: relative;
+  display: inline-block;
+}
+
+.highlight::after {
+  content: "";
   position: absolute;
-  width: 597px;
-  height: 34px;
-  left: 75px;
-  top: 543px;
-  background: linear-gradient(91.1deg, #AA340D -0.56%, rgba(170, 52, 13, 0.85) 28.66%, rgba(170, 52, 13, 0.895274) 42.25%, rgba(255, 255, 255, 0.61) 51.13%, rgba(170, 52, 13, 0.78) 61.38%, #AA340D 74.52%, rgba(170, 52, 13, 0) 89.67%);
+  left: 0;
+  bottom: 0.15em;
+  width: 100%;
+  height: 0.35em;
+  background: linear-gradient(
+    90deg,
+    #AA340D -0.56%,
+    rgba(170, 52, 13, 0.85) 28.66%,
+    rgba(170, 52, 13, 0.895274) 42.25%,
+    rgba(255, 255, 255, 0.61) 51.13%,
+    rgba(170, 52, 13, 0.78) 61.38%,
+    #AA340D 74.52%,
+    rgba(170, 52, 13, 0) 89.67%
+  );
+  z-index: -1;
 }
