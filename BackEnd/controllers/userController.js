@@ -40,7 +40,7 @@ class UserController {
     }
 
     static async register (req, res) {
-        const { name, email, password } = req.body;
+        const { name, email, password, confirmPassword } = req.body;
 
         const possibleUser = await client.user.findUnique({
             where: {
@@ -49,7 +49,7 @@ class UserController {
         });
 
         if (possibleUser) {
-            return res.json({
+            return res.status(409).json({
                 message: 'Email already registered',
                 error: true
             })
@@ -58,8 +58,8 @@ class UserController {
         const salt = bcryptjs.genSaltSync(8);
         const hashPassword = bcryptjs.hashSync(password, salt);
 
-        if (!name || !email || !password) {
-            return res.json({
+        if (!name || !email || !password || !confirmPassword || (confirmPassword !== password)) {
+            return res.status(400).json({
                 message: 'Registration failed',
                 error: true
             });
@@ -75,7 +75,7 @@ class UserController {
 
         const token = jwt.sign({id: user.id}, process.env.SECRET_KEY, {expiresIn: '2h'});
 
-        return res.json({
+        return res.status(200).json({
             message: 'Registration successful',
             error: false,
             token 

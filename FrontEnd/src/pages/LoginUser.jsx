@@ -12,12 +12,33 @@ export default function LoginUser() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await apiUser({ email, password, functionUser: 'login', navigate });
+        try {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/${functionUser}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email,
+                    password
+                })
+            })
+
+            const data = await res.json();
+
+            if (data.error) {
+                throw new Error(data.message);
+            }
+            
+            localStorage.setItem(data.token);
+            navigate('/');
+        } catch (err) {
+            console.error(err);
+        }
     }
 
+
     return (
-        <div className={styles.background} style={{  backgroundImage: `linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${bgImg})` }}>
-            <Link className={styles.voltar}to='/'>ᐸ</Link>
+        <div className={styles.background} style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${bgImg})` }}>
+            <Link className={styles.voltar} to='/'>ᐸ</Link>
             <div className={styles.line}></div>
             <h1 className={styles.title}>Login</h1>
             <form className={styles.form} onSubmit={handleSubmit}>
@@ -32,7 +53,7 @@ export default function LoginUser() {
                     type='password'
                     onChange={event => setPassword(event.target.value)}
                     value={password}
-                /> 
+                />
                 <div className={styles.borderButton}>
                     <button className={styles.buttonLoginRegister}>Login</button>
                 </div>
