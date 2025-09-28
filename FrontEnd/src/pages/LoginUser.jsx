@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import apiUser from '../api/apiUser';
 import bgImg from '../assets/background-fire.png';
 import styles from '../styles/auth.module.css';
 
@@ -13,7 +12,7 @@ export default function LoginUser() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/${functionUser}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -27,11 +26,12 @@ export default function LoginUser() {
             if (data.error) {
                 throw new Error(data.message);
             }
-            
-            localStorage.setItem(data.token);
+
+            localStorage.setItem("token", data.token);
+            alert(data.message);
             navigate('/');
         } catch (err) {
-            console.error(err);
+            alert(err);
         }
     }
 

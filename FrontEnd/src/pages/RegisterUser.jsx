@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import apiUser from '../api/apiUser';
 import bgImg from '../assets/background-fire.png';
 import styles from '../styles/auth.module.css';
 
@@ -14,13 +13,14 @@ export default function Register() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (password === confirmPassword) {
+
+        if (password !== confirmPassword) {
             alert('Passwords do not match');
             return;
         }
 
         try {
-            const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/${functionUser}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
@@ -37,12 +37,12 @@ export default function Register() {
                 throw new Error(data.message);
             }
 
-            localStorage.setItem(data.token);
+            localStorage.setItem("token", data.token);
+            alert(data.message);
             navigate('/');
         } catch (err) {
-            console.error(err);
+            alert(err);
         }
-
     }
 
     return (

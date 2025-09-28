@@ -28,10 +28,10 @@ export default function Header () {
             </div>
             <div className={styles.auth}>
                 <div className={styles.borderButton}>
-                    <button className={styles.buttonRegister}><Link to='/user/register'>Cadastrar</Link></button>
+                    <Link to='/user/register'><button className={styles.buttonRegister}>Cadastrar</button></Link>
                 </div>
                  <div className={styles.borderButton}>
-                    <button className={styles.buttonLogin}><Link to='/user/login'>Login</Link></button>
+                    <Link to='/user/login'><button className={styles.buttonLogin}>Login</button></Link>
                 </div>
             </div>
         </header>
