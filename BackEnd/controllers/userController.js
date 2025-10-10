@@ -60,7 +60,7 @@ class UserController {
 
         if (!name || !email || !password || !confirmPassword || (confirmPassword !== password)) {
             return res.status(400).json({
-                message: 'Registration failed!',
+                message: 'All fields are required!',
                 error: true
             });
         }
