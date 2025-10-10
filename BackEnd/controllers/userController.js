@@ -5,7 +5,7 @@ import { PrismaClient } from '@prisma/client';
 const client = new PrismaClient();
 
 class UserController {
-    static async login (req, res) {
+    static async loginUser (req, res) {
         const { email, password } = req.body;
 
         const user = await client.user.findUnique({
@@ -39,7 +39,7 @@ class UserController {
         });
     }
 
-    static async register (req, res) {
+    static async registerUser (req, res) {
         const { name, email, password, confirmPassword } = req.body;
 
         const possibleUser = await client.user.findUnique({

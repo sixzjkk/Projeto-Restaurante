@@ -27,7 +27,7 @@ export default function LoginUser() {
                 throw new Error(data.message);
             }
 
-            localStorage.setItem("token", data.token);
+            localStorage.setItem("Authorization", data.token);
             alert(data.message);
             navigate('/');
         } catch (err) {
