@@ -16,7 +16,7 @@ class UserController {
 
         if (!user) {
             return res.status(404).json({
-                message: 'User not found',
+                message: 'User not found!',
                 error: true
             })
         }
@@ -25,7 +25,7 @@ class UserController {
 
         if (!correctPassword) {
             return res.status(401).json({
-                message: 'Incorrect password',
+                message: 'Incorrect password!',
                 error: true
             });
         }
@@ -50,7 +50,7 @@ class UserController {
 
         if (possibleUser) {
             return res.status(409).json({
-                message: 'Email already registered',
+                message: 'Email already registered!',
                 error: true
             })
         }
@@ -60,7 +60,7 @@ class UserController {
 
         if (!name || !email || !password || !confirmPassword || (confirmPassword !== password)) {
             return res.status(400).json({
-                message: 'Registration failed',
+                message: 'Registration failed!',
                 error: true
             });
         }
@@ -76,7 +76,7 @@ class UserController {
         const token = jwt.sign({id: user.id}, process.env.SECRET_KEY, {expiresIn: '2h'});
 
         return res.status(200).json({
-            message: 'Registration successful',
+            message: 'Registration successful!',
             error: false,
             token 
         });
