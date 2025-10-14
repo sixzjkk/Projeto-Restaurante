@@ -13,16 +13,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model Usuario {
   id Int @id @default(autoincrement())
-  name String
+  nome String
   email String @unique
   password String
-  type String @default("client")
+  tipo String @default("cliente")
 }
 
-model Table {
+model Mesa {
   id Int @id @default(autoincrement())
-  code String
-  n_seats Int
+  codigo String
+  n_lugares Int
 }

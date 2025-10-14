@@ -19,7 +19,7 @@ function loginMiddleware(req, res, next) {
             })
         }
 
-        req.userId = payload.id;
+        req.usuarioId = payload.id;
         next();
     })
 

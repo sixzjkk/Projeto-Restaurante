@@ -2,8 +2,8 @@ import { PrismaClient } from '@prisma/client';
 
 const client = new PrismaClient();
 
-class TableController {
-    static async registerTable(req, res) {
+class MesaController {
+    static async registerMesa(req, res) {
         const { code, n_seats } = req.body;
         
         if (!code || !n_seats) {
@@ -13,7 +13,7 @@ class TableController {
             });
         }
 
-        await client.table.create({
+        await client.mesa.create({
             code,
             n_seats
         });
@@ -25,4 +25,4 @@ class TableController {
     }
 }
 
-export default { TableController };
+export default { MesaController };

@@ -1,6 +1,8 @@
 import express from 'express';
-import TableController from '../controllers/TableController';
+import { MesaController } from '../controllers/Mesa';
 
-const tableRoutes = express.Router();
+const mesaRoutes = express.Router();
 
-tableRoutes.post('/new', TableController.registerTable);
+mesaRoutes.post('/novo', MesaController.registerMesa);
+
+export default mesaRoutes;

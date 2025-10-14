@@ -95,13 +95,13 @@ test('POST /auth/login return Authenticated!', async () => {
     expect(res.status).toBe(200);
 });
 
-test('POST /auth/login return User not found', async () => {
+test('POST /auth/login return Usuario not found', async () => {
     const res = await supertest(app).post('/auth/login').send({
         email: '',
         password: ''
     });
 
-    expect(res.body.message).toBe('User not found');
+    expect(res.body.message).toBe('Usuario not found');
     expect(res.status).toBe(404);
 });
 

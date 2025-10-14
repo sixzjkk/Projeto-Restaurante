@@ -4,24 +4,24 @@ import { PrismaClient } from '@prisma/client';
 
 const client = new PrismaClient();
 
-class UserController {
-    static async loginUser (req, res) {
+class UsuarioController {
+    static async loginUsuario (req, res) {
         const { email, password } = req.body;
 
-        const user = await client.user.findUnique({
+        const usuario = await client.usuario.findUnique({
             where: {
                 email
             }
         });
 
-        if (!user) {
+        if (!usuario) {
             return res.status(404).json({
-                message: 'User not found!',
+                message: 'Usuario not found!',
                 error: true
             })
         }
 
-        const correctPassword = bcryptjs.compareSync(password, user.password);
+        const correctPassword = bcryptjs.compareSync(password, usuario.password);
 
         if (!correctPassword) {
             return res.status(401).json({
@@ -30,7 +30,7 @@ class UserController {
             });
         }
 
-        const token = jwt.sign({id: user.id}, process.env.SECRET_KEY, {expiresIn: '2h'});
+        const token = jwt.sign({id: usuario.id}, process.env.SECRET_KEY, {expiresIn: '2h'});
 
         return res.status(200).json({
             message: 'Authenticated!',
@@ -39,16 +39,16 @@ class UserController {
         });
     }
 
-    static async registerUser (req, res) {
+    static async registerUsuario (req, res) {
         const { name, email, password, confirmPassword } = req.body;
 
-        const possibleUser = await client.user.findUnique({
+        const possibleUsuario = await client.usuario.findUnique({
             where: {
                 email
             }
         });
 
-        if (possibleUser) {
+        if (possibleUsuario) {
             return res.status(409).json({
                 message: 'Email already registered!',
                 error: true
@@ -65,7 +65,7 @@ class UserController {
             });
         }
 
-        const user = await client.user.create({
+        const usuario = await client.usuario.create({
             data: {
                 name,
                 email,
@@ -73,7 +73,7 @@ class UserController {
             }
         });
 
-        const token = jwt.sign({id: user.id}, process.env.SECRET_KEY, {expiresIn: '2h'});
+        const token = jwt.sign({id: usuario.id}, process.env.SECRET_KEY, {expiresIn: '2h'});
 
         return res.status(200).json({
             message: 'Registration successful!',
@@ -83,4 +83,4 @@ class UserController {
     }
 }
 
-export { UserController };
+export { UsuarioController };
