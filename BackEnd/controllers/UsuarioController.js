@@ -21,9 +21,9 @@ class UsuarioController {
             })
         }
 
-        const correctPassword = bcryptjs.compareSync(password, usuario.password);
+        const isCorrectPassword = bcryptjs.compareSync(password, usuario.password);
 
-        if (!correctPassword) {
+        if (!isCorrectPassword) {
             return res.status(401).json({
                 message: 'Incorrect password!',
                 error: true
@@ -39,16 +39,16 @@ class UsuarioController {
         });
     }
 
-    static async registerUsuario (req, res) {
-        const { name, email, password, confirmPassword } = req.body;
+    static async cadastroUsuario (req, res) {
+        const { nome, email, password, confirmPassword } = req.body;
 
-        const possibleUsuario = await client.usuario.findUnique({
+        const possivelUsuario = await client.usuario.findUnique({
             where: {
                 email
             }
         });
 
-        if (possibleUsuario) {
+        if (possivelUsuario) {
             return res.status(409).json({
                 message: 'Email already registered!',
                 error: true
@@ -58,7 +58,7 @@ class UsuarioController {
         const salt = bcryptjs.genSaltSync(8);
         const hashPassword = bcryptjs.hashSync(password, salt);
 
-        if (!name || !email || !password || !confirmPassword || (confirmPassword !== password)) {
+        if (!nome || !email || !password || !confirmPassword || (confirmPassword !== password)) {
             return res.status(400).json({
                 message: 'All fields are required!',
                 error: true
@@ -67,7 +67,7 @@ class UsuarioController {
 
         const usuario = await client.usuario.create({
             data: {
-                name,
+                nome,
                 email,
                 password: hashPassword
             }

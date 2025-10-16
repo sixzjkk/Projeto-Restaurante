@@ -4,9 +4,9 @@ const client = new PrismaClient();
 
 class MesaController {
     static async registerMesa(req, res) {
-        const { code, n_seats } = req.body;
+        const { codigo, n_lugares } = req.body;
         
-        if (!code || !n_seats) {
+        if (!codigo || !n_lugares) {
             return res.status(400).json({
                 message: 'All fields are required!',
                 error: true
@@ -14,8 +14,10 @@ class MesaController {
         }
 
         await client.mesa.create({
-            code,
-            n_seats
+            data: {
+                codigo,
+                n_lugares
+            }
         });
 
         return res.status(200).json({
