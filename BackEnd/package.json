@@ -25,7 +25,7 @@
   "contributors": [],
   "scripts": {
     "start": "node --watch server.js",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/.bin/jest"
   },
   "dependencies": {
     "@prisma/client": "^6.17.1",

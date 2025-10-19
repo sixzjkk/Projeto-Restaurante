@@ -61,7 +61,7 @@ test('POST /auth/cadastro return All fields are required! (confirmPassword incor
     expect(res.status).toBe(400);
 });
 
-test('POST /auth/cadastro return Registration successful', async () => {
+test('POST /auth/cadastro return Registration successful!', async () => {
     const res = await supertest(app).post('/auth/cadastro').send({
         nome: 'Admin',
         email: 'admin@gmail.com',
@@ -69,11 +69,11 @@ test('POST /auth/cadastro return Registration successful', async () => {
         confirmPassword: 'adminS2'
     });
 
-    expect(res.body.message).toBe('Registration successful');
+    expect(res.body.message).toBe('Registration successful!');
     expect(res.status).toBe(200);
 });
 
-test('POST /auth/cadastro return Email already cadastroed', async () => {
+test('POST /auth/cadastro return Email already registered!', async () => {
     const res = await supertest(app).post('/auth/cadastro').send({
         nome: 'Admin',
         email: 'admin@gmail.com',
@@ -81,7 +81,7 @@ test('POST /auth/cadastro return Email already cadastroed', async () => {
         confirmPassword: 'adminS2'
     });
 
-    expect(res.body.message).toBe('Email already cadastroed');
+    expect(res.body.message).toBe('Email already registered!');
     expect(res.status).toBe(409);
 });
 
@@ -95,22 +95,22 @@ test('POST /auth/login return Authenticated!', async () => {
     expect(res.status).toBe(200);
 });
 
-test('POST /auth/login return Usuario not found', async () => {
+test('POST /auth/login return Usuario not found!', async () => {
     const res = await supertest(app).post('/auth/login').send({
         email: '',
         password: ''
     });
 
-    expect(res.body.message).toBe('Usuario not found');
+    expect(res.body.message).toBe('Usuario not found!');
     expect(res.status).toBe(404);
 });
 
-test('POST /auth/login return Incorrect password', async () => {
+test('POST /auth/login return Incorrect password!', async () => {
     const res = await supertest(app).post('/auth/login').send({
         email: 'admin@gmail.com',
         password: 'admin'
     });
 
-    expect(res.body.message).toBe('Incorrect password');
+    expect(res.body.message).toBe('Incorrect password!');
     expect(res.status).toBe(401)
 });
