@@ -1,7 +1,7 @@
 import supertest from 'supertest';
 import app from '../server.js';
 
-test('POST /auth/cadastro return All fields are required! (no nome)', async () => {
+test('POST /auth/cadastro return Todos os campos são obrigatórios! (no nome)', async () => {
     const res = await supertest(app).post('/auth/cadastro').send({
         nome: '',
         email: 'admin@gmail.com',
@@ -9,11 +9,11 @@ test('POST /auth/cadastro return All fields are required! (no nome)', async () =
         confirmPassword: 'admin'
     });
 
-    expect(res.body.message).toBe('All fields are required!');
+    expect(res.body.message).toBe('Todos os campos são obrigatórios!');
     expect(res.status).toBe(400);
 });
 
-test('POST /auth/cadastro return All fields are required! (no email)', async () => {
+test('POST /auth/cadastro return Todos os campos são obrigatórios! (no email)', async () => {
     const res = await supertest(app).post('/auth/cadastro').send({
         nome: 'Admin',
         email: '',
@@ -21,11 +21,11 @@ test('POST /auth/cadastro return All fields are required! (no email)', async () 
         confirmPassword: 'admin'
     });
 
-    expect(res.body.message).toBe('All fields are required!');
+    expect(res.body.message).toBe('Todos os campos são obrigatórios!');
     expect(res.status).toBe(400);
 });
 
-test('POST /auth/cadastro return All fields are required! (no password)', async () => {
+test('POST /auth/cadastro return Todos os campos são obrigatórios! (no password)', async () => {
     const res = await supertest(app).post('/auth/cadastro').send({
         nome: 'Admin',
         email: 'admin@gmail.com',
@@ -33,35 +33,11 @@ test('POST /auth/cadastro return All fields are required! (no password)', async 
         confirmPassword: 'admin'
     });
 
-    expect(res.body.message).toBe('All fields are required!');
+    expect(res.body.message).toBe('Todos os campos são obrigatórios!');
     expect(res.status).toBe(400);
 });
 
-test('POST /auth/cadastro return All fields are required! (no confirmPassword)', async () => {
-    const res = await supertest(app).post('/auth/cadastro').send({
-        nome: 'Admin',
-        email: 'admin@gmail.com',
-        password: 'adminS2',
-        confirmPassword: ''
-    });
-
-    expect(res.body.message).toBe('All fields are required!');
-    expect(res.status).toBe(400);
-});
-
-test('POST /auth/cadastro return All fields are required! (confirmPassword incorrect)', async () => {
-    const res = await supertest(app).post('/auth/cadastro').send({
-        nome: 'Admin',
-        email: 'admin@gmail.com',
-        password: 'adminS2',
-        confirmPassword: 'admin'
-    });
-
-    expect(res.body.message).toBe('All fields are required!');
-    expect(res.status).toBe(400);
-});
-
-test('POST /auth/cadastro return Registration successful!', async () => {
+test('POST /auth/cadastro return Cadastro bem sucedido!', async () => {
     const res = await supertest(app).post('/auth/cadastro').send({
         nome: 'Admin',
         email: 'admin@gmail.com',
@@ -69,11 +45,11 @@ test('POST /auth/cadastro return Registration successful!', async () => {
         confirmPassword: 'adminS2'
     });
 
-    expect(res.body.message).toBe('Registration successful!');
+    expect(res.body.message).toBe('Cadastro bem sucedido!');
     expect(res.status).toBe(200);
 });
 
-test('POST /auth/cadastro return Email already registered!', async () => {
+test('POST /auth/cadastro return Email já registrado!', async () => {
     const res = await supertest(app).post('/auth/cadastro').send({
         nome: 'Admin',
         email: 'admin@gmail.com',
@@ -81,36 +57,36 @@ test('POST /auth/cadastro return Email already registered!', async () => {
         confirmPassword: 'adminS2'
     });
 
-    expect(res.body.message).toBe('Email already registered!');
+    expect(res.body.message).toBe('Email já registrado!');
     expect(res.status).toBe(409);
 });
 
-test('POST /auth/login return Authenticated!', async () => {
+test('POST /auth/login return Autenticado!', async () => {
     const res = await supertest(app).post('/auth/login').send({
         email: 'admin@gmail.com',
         password: 'adminS2'
     });
 
-    expect(res.body.message).toBe('Authenticated!');
+    expect(res.body.message).toBe('Autenticado!');
     expect(res.status).toBe(200);
 });
 
-test('POST /auth/login return Usuario not found!', async () => {
+test('POST /auth/login return Usuário não encontrado!', async () => {
     const res = await supertest(app).post('/auth/login').send({
         email: '',
         password: ''
     });
 
-    expect(res.body.message).toBe('Usuario not found!');
+    expect(res.body.message).toBe('Usuário não encontrado!');
     expect(res.status).toBe(404);
 });
 
-test('POST /auth/login return Incorrect password!', async () => {
+test('POST /auth/login return Senha incorreta!', async () => {
     const res = await supertest(app).post('/auth/login').send({
         email: 'admin@gmail.com',
         password: 'admin'
     });
 
-    expect(res.body.message).toBe('Incorrect password!');
+    expect(res.body.message).toBe('Senha incorreta!');
     expect(res.status).toBe(401)
 });

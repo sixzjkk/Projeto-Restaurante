@@ -8,7 +8,7 @@ class MesaController {
         
         if (!codigo || !n_lugares) {
             return res.status(400).json({
-                message: 'All fields are required!',
+                message: 'Todos os campos são obrigatórios!',
                 error: true
             });
         }

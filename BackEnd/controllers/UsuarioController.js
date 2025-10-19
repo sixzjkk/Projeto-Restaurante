@@ -16,7 +16,7 @@ class UsuarioController {
 
         if (!usuario) {
             return res.status(404).json({
-                message: 'Usuario not found!',
+                message: 'Usuário não encontrado!',
                 error: true
             })
         }
@@ -25,7 +25,7 @@ class UsuarioController {
 
         if (!isCorrectPassword) {
             return res.status(401).json({
-                message: 'Incorrect password!',
+                message: 'Senha incorreta!',
                 error: true
             });
         }
@@ -33,14 +33,14 @@ class UsuarioController {
         const token = jwt.sign({id: usuario.id}, process.env.SECRET_KEY, {expiresIn: '2h'});
 
         return res.status(200).json({
-            message: 'Authenticated!',
+            message: 'Autenticado!',
             error: false,
             token
         });
     }
 
     static async cadastroUsuario (req, res) {
-        const { nome, email, password, confirmPassword } = req.body;
+        const { nome, email, password} = req.body;
 
         const possivelUsuario = await client.usuario.findUnique({
             where: {
@@ -50,7 +50,7 @@ class UsuarioController {
 
         if (possivelUsuario) {
             return res.status(409).json({
-                message: 'Email already registered!',
+                message: 'Email já registrado!',
                 error: true
             })
         }
@@ -58,9 +58,9 @@ class UsuarioController {
         const salt = bcryptjs.genSaltSync(8);
         const hashPassword = bcryptjs.hashSync(password, salt);
 
-        if (!nome || !email || !password || !confirmPassword || (confirmPassword !== password)) {
+        if (!nome || !email || !password) {
             return res.status(400).json({
-                message: 'All fields are required!',
+                message: 'Todos os campos são obrigatórios!',
                 error: true
             });
         }
@@ -76,7 +76,7 @@ class UsuarioController {
         const token = jwt.sign({id: usuario.id}, process.env.SECRET_KEY, {expiresIn: '2h'});
 
         return res.status(200).json({
-            message: 'Registration successful!',
+            message: 'Cadastro bem sucedido!',
             error: false,
             token 
         });

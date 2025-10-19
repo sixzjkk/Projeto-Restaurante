@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 
 function loginMiddleware(req, res, next) {
-    const authHeader = req.headers['Authorization'];
-
+    const authHeader = req.headers['authorization'];
+    
     if (!authHeader) {
         return res.status(401).json({
             message: 'Login required!',

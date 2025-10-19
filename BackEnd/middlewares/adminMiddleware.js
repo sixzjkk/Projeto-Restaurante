@@ -16,7 +16,7 @@ async function adminMiddleware(req, res, next) {
         }
     });
 
-    if (!usuario || usuario.type != 'adm') {
+    if (!usuario || usuario.tipo != 'adm') {
         return res.status(403).json({
             message: 'Access denied!',
             error: true
