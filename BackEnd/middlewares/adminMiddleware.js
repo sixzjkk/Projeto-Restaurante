@@ -5,7 +5,7 @@ const client = new PrismaClient();
 async function adminMiddleware(req, res, next) {
     if (!req.usuarioId) {
         return res.status(401).json({
-            message: 'Login required!',
+            message: 'É necessário fazer login!',
             error: true
         });
     }
@@ -18,7 +18,7 @@ async function adminMiddleware(req, res, next) {
 
     if (!usuario || usuario.tipo != 'adm') {
         return res.status(403).json({
-            message: 'Access denied!',
+            message: 'Acesso negado!',
             error: true
         });
     }

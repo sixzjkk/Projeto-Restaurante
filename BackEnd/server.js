@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use('/auth', usuarioRoutes);
+app.use('/', usuarioRoutes);
 app.use('/mesas', mesaRoutes);
 
 app.listen(port, () => {

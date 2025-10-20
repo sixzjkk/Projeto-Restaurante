@@ -3,6 +3,16 @@ import { PrismaClient } from '@prisma/client';
 const client = new PrismaClient();
 
 class MesaController {
+     static async buscarMesas(req, res) {
+        const mesas = await client.mesa.findMany({});
+
+        return res.status(200).json({
+            message: 'Mesas buscadas com sucesso!',
+            error: false,
+            mesas
+        });
+    }
+    
     static async registerMesa(req, res) {
         const { codigo, n_lugares } = req.body;
         
@@ -21,7 +31,7 @@ class MesaController {
         });
 
         return res.status(200).json({
-            message: 'Registration successful!',
+            message: 'Mesa cadastrada com sucesso!',
             error: false
         });
     }
