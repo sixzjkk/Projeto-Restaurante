@@ -4,7 +4,7 @@ import bgImg from '../assets/background-fire.png';
 import styles from '../styles/auth.module.css';
 
 export default function Register() {
-    const [name, setName] = useState('');
+    const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -20,16 +20,16 @@ export default function Register() {
         }
 
         try {
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/register`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/cadastro`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
-                    name,
+                    nome,
                     email,
                     password,
                     confirmPassword
                 })
-            })
+            });
 
             const data = await res.json();
 
@@ -54,8 +54,8 @@ export default function Register() {
                 <input className={styles.input}
                     placeholder='Nome: '
                     type='string'
-                    onChange={event => setName(event.target.value)}
-                    value={name}
+                    onChange={event => setNome(event.target.value)}
+                    value={nome}
                 />
                 <input className={styles.input}
                     placeholder='E-mail: '

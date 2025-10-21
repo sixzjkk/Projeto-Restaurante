@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import logo from '../assets/logo.png';
+import iconUser from '../assets/icon-user.png';
 import styles from '../styles/header.module.css';
 import { Link } from 'react-router-dom';
 
@@ -61,7 +62,7 @@ export default function Header() {
                 {
                     isLogado ?
                         <>
-                            <img src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTAWRTlPgbJmYTdG6UEyeU9cUlBlHHcpccfDEPuM8PRDSoioEf-fquWcWsyfbLCv-w9Mpv4RbHmzauIabXPWce7uzXiGyvkveXkELLUr0Q' />
+                            <img src={iconUser} />
                         </>
                         :
                         <>
