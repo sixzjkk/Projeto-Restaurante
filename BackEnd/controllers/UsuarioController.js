@@ -28,7 +28,7 @@ class UsuarioController {
         });
 
         usuario.password = undefined;
-
+        
         return res.status(200).json({
             message: 'Usuário buscado!',
             error: false,

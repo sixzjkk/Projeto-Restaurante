@@ -11,7 +11,7 @@ function loginMiddleware(req, res, next) {
     }
 
     const token = authHeader.split(' ')[1];
-    console.log(token)
+
     jwt.verify(token, process.env.SECRET_KEY, (err, payload) => {
         if (err) {
             return res.status().json({

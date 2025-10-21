@@ -19,7 +19,7 @@ export default function LoginUser() {
                     email,
                     password
                 })
-            })
+            });
 
             const data = await res.json();
 
@@ -27,7 +27,7 @@ export default function LoginUser() {
                 throw new Error(data.message);
             }
 
-            localStorage.setItem("Authorization", data.token);
+            localStorage.setItem("authorization", data.token);
             alert(data.message);
             navigate('/');
         } catch (err) {

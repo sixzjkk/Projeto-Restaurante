@@ -37,7 +37,7 @@ export default function Register() {
                 throw new Error(data.message);
             }
 
-            localStorage.setItem("Authorization", data.token);
+            localStorage.setItem("authorization", data.token);
             alert(data.message);
             navigate('/');
         } catch (err) {
