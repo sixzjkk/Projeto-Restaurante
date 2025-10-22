@@ -83,3 +83,8 @@ a, .buttonLogin, .buttonRegister {
     text-decoration: none;
     font-size: 12px;
 }
+
+.iconUser {
+    width: 45px;
+    cursor: pointer;
+}

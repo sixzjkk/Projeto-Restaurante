@@ -1,39 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import logo from '../assets/logo.png';
 import iconUser from '../assets/icon-user.png';
 import styles from '../styles/header.module.css';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
-    const [isLogado, setIsLogado] = useState(false);
-
-    useEffect(() => {
-        const verificarLogin = async () => {
-            const token = localStorage.getItem('authorization');
-
-            if (token) {
-                try {
-                    const res = await fetch(`${import.meta.env.VITE_API_URL}/perfil`, {
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'authorization': `Bearer ${token}`
-                        }
-                    });
-
-                    if (!res.error) {
-                        setIsLogado(true);
-                    } else {
-                        throw new Error(res.message);
-                    }
-
-                } catch (err) {
-                    setIsLogado(false);
-                }
-            }
-        }
-
-        verificarLogin();
-    }, []);
+    const [isLogado, setIsLogado] = useState(localStorage.getItem('authorization'));
 
     const scrollHome = () => {
         const element = document.getElementById('home');
@@ -62,7 +34,7 @@ export default function Header() {
                 {
                     isLogado ?
                         <>
-                            <img src={iconUser} />
+                            <Link to='/user'><img className={styles.iconUser} src={iconUser} /></Link>
                         </>
                         :
                         <>
@@ -73,9 +45,8 @@ export default function Header() {
                                 <Link to='/user/login'><button className={styles.buttonLogin}>Login</button></Link>
                             </div>
                         </>
-
                 }
             </div>
-        </header>
+        </header >
     );
 }

@@ -14,7 +14,7 @@ function loginMiddleware(req, res, next) {
 
     jwt.verify(token, process.env.SECRET_KEY, (err, payload) => {
         if (err) {
-            return res.status().json({
+            return res.status(401).json({
                 message: 'Token inválido!',
                 error: true
             })
