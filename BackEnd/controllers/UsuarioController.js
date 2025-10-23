@@ -28,7 +28,7 @@ class UsuarioController {
         });
 
         usuario.password = undefined;
-        
+
         return res.status(200).json({
             message: 'Usuário buscado!',
             error: false,
@@ -37,22 +37,35 @@ class UsuarioController {
     }
 
     static async atualizarUsuario(req, res) {
-        const usuarioAtualizado = req.body;
+        const { nome, email } = req.body;
 
-        if (!usuarioAtualizado.nome || !usuarioAtualizado.email) {
+        if (!nome || !email) {
             return res.status(400).json({
                 message: 'Todos os campos são obrigatórios!',
                 error: true
             });
         }
 
+        const possivelUsuario = await client.findUnique({
+            where: {
+                email
+            }
+        });
+
+        if (possivelUsuario && possivelUsuario.id != req.usuarioId) {
+            return res.status(409).json({
+                message: 'Email já usado!',
+                error: true
+            });
+        }
+ 
         await client.usuario.update({
             where: {
                 id: req.usuarioId
             },
             data: {
-                nome: usuarioAtualizado.nome,
-                email: usuarioAtualizado.email
+                nome,
+                email
             }
         });
 
@@ -109,7 +122,7 @@ class UsuarioController {
             return res.status(409).json({
                 message: 'Email já registrado!',
                 error: true
-            })
+            });
         }
 
         const salt = bcryptjs.genSaltSync(8);
