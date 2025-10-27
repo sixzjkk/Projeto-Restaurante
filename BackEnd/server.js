@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import usuarioRoutes from './routes/usuarioRoutes.js';
+import reservaRoutes from './routes/reservaRoutes.js';
 import mesaRoutes from './routes/mesaRoutes.js';
 
 const port = 4000;
@@ -10,6 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/', usuarioRoutes);
+app.use('/', reservaRoutes);
 app.use('/mesas', mesaRoutes);
 
 app.listen(port, () => {
