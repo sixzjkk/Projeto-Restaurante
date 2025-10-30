@@ -25,14 +25,17 @@ export default function BuscarMesas() {
 
     return (
     <>
-        {
+        <table>
+            {
             mesas.map(mesa => (
-                <div key={mesa.id}>
-                    <p style={{color: 'white'}}>{mesa.codigo}</p>
-                    <p style={{color: 'white'}}>{mesa.n_lugares}</p>
-                </div>
+                <tr key={mesa.id}>
+                    <td>MESA {mesa.id}</td>
+                    <td>CÓDIGO {mesa.codigo}</td>
+                    <td>{mesa.n_lugares} LUGARES</td>
+                </tr>
             ))
         }
+        </table>
     </>
     );
 }
