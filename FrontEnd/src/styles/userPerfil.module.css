@@ -1,0 +1,108 @@
+body {
+    background-color: #120801;
+}
+
+.voltar {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.infoPerfil {
+    padding: 3rem;
+    margin-left: 3%;
+}
+
+.nomeUsuario {
+    font-family: 'Proza Libre';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 41px;
+    color: #FFFFFF;
+    margin-bottom: -5px;
+}
+
+.emailUsuario {
+    font-family: 'Proza Libre';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: #FFFFFF;
+}
+
+.tipoUsuario {
+    font-family: 'Proza Libre';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #D0CECC;
+}
+
+.buttonEditar, .buttonEditarSalvar {
+    box-sizing: border-box;
+    width: 324px;
+    height: 40px;
+    border: 0.5px solid #B62D00;
+    cursor: pointer;
+    color: #ffffffca;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Proza Libre", sans-serif;
+}
+
+
+.buttonEditar:hover {
+    background: linear-gradient(90.88deg, rgba(170, 52, 13, 0.247) -4.95%, rgba(170, 52, 13, 0.115) 105.66%);
+}
+
+.buttonEditar {
+    background: linear-gradient(90.88deg, rgba(170, 52, 13, 0.032) -4.95%, rgba(170, 52, 13, 0) 105.66%);
+}
+
+.buttonEditarSalvar {
+    background: linear-gradient(90.88deg, rgba(170, 52, 13, 0.85) -4.95%, rgba(170, 52, 13, 0) 105.66%);
+}
+
+.buttonEditarSalvar:hover {
+    background: linear-gradient(90.88deg, rgb(170, 52, 13) -4.95%, rgba(170, 52, 13, 0.256) 105.66%);
+}
+
+.borderButton {
+    border: 0.5px solid #ffffffca;
+    padding: 5px;
+    border-radius: 2px;
+    width: 324px;
+}
+
+.infoEditar {
+    margin-top: 40px;
+}
+
+.inputEditar {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    width: 334px;
+    height: 50px;
+    border: 1px solid #ffffffca;
+    background-color: #00000000;
+    border-radius: 2px;
+    color: #ffffffca;
+}
+
+.inputEditar::placeholder {
+    color: #ffffffca;
+    text-transform: uppercase;
+    font-family: "Proza Libre", sans-serif;
+}
+

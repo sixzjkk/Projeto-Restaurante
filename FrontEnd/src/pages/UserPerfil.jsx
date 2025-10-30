@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import iconUser from '../assets/icon-user.png';
+import styles from '../styles/userPerfil.module.css';
 
 export default function UserPerfil() {
     const [usuario, setUsuario] = useState();
@@ -80,22 +81,28 @@ export default function UserPerfil() {
 
     return (
         <div>
-            <div>
+            <Link className={styles.voltar} to='/'>ᐸ</Link>
+            <div className={styles.infoPerfil}>
                 <img src={usuario.img ? usuario.img : iconUser} />
                 <div>
                     {
                         editando ?
-                            <>
-                                <input onChange={event => setNewNome(event.target.value)} value={newNome} />
-                                <input onChange={event => setNewEmail(event.target.value)} value={newEmail} />
-                                <button onClick={() => updateUsuario()}>Salvar</button>
-                            </> : <>
-                                <p>{usuario.nome}</p>
-                                <p>{usuario.email}</p>
-                                <button onClick={() => setEditando(true)}>Editar</button>
+    
+                            <div className={styles.infoEditar}>
+                                <input className={styles.inputEditar} onChange={event => setNewNome(event.target.value)} value={newNome} />
+                                <input className={styles.inputEditar} onChange={event => setNewEmail(event.target.value)} value={newEmail} />
+                                <div className={styles.borderButton}>
+                                    <button className={styles.buttonEditarSalvar} onClick={() => updateUsuario()}>Salvar</button>
+                                </div>
+                            </div> : <>
+                                <p className={styles.nomeUsuario}>{usuario.nome}</p>
+                                <p className={styles.emailUsuario}>{usuario.email}</p>
+                                <div className={styles.borderButton}>
+                                    <button className={styles.buttonEditar} onClick={() => setEditando(true)}>Editar</button>
+                                </div>
                             </>
                     }
-                    <p>{usuario.tipo}</p>
+                    <p className={styles.tipoUsuario}>{usuario.tipo.toUpperCase()[0] + usuario.tipo.slice(1)}</p>
                 </div>
             </div>
             <div>
