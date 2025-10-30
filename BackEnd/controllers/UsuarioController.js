@@ -46,7 +46,7 @@ class UsuarioController {
             });
         }
 
-        const possivelUsuario = await client.findUnique({
+        const possivelUsuario = await client.usuario.findUnique({
             where: {
                 email
             }

@@ -7,6 +7,6 @@ const mesaRoutes = express.Router();
 
 mesaRoutes.get('/', MesaController.buscarMesas);
 
-mesaRoutes.post('/novo', loginMiddleware, adminMiddleware, MesaController.registerMesa);
+mesaRoutes.post('/novo', loginMiddleware, adminMiddleware, MesaController.cadastrarMesa);
 
 export default mesaRoutes;

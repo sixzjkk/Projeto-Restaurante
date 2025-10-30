@@ -13,7 +13,7 @@ class MesaController {
         });
     }
     
-    static async registerMesa(req, res) {
+    static async cadastrarMesa(req, res) {
         const { codigo, n_lugares } = req.body;
         
         if (!codigo || !n_lugares) {
@@ -26,7 +26,7 @@ class MesaController {
         await client.mesa.create({
             data: {
                 codigo,
-                n_lugares
+                n_lugares: parseInt(n_lugares)
             }
         });
 
