@@ -109,8 +109,8 @@ class UsuarioController {
         });
     }
 
-    static async cadastroUsuario(req, res) {
-        const { nome, email, password } = req.body;
+    static async cadastrarUsuario(req, res) {
+        const { nome, sobrenome, email, senha, uf, cidade, bairro, rua, numeroCasa } = req.body;
 
         const possivelUsuario = await client.usuario.findUnique({
             where: {
@@ -126,9 +126,9 @@ class UsuarioController {
         }
 
         const salt = bcryptjs.genSaltSync(8);
-        const hashPassword = bcryptjs.hashSync(password, salt);
+        const hashSenha = bcryptjs.hashSync(senha, salt);
 
-        if (!nome || !email || !password) {
+        if (!nome || !sobrenome || !email || !senha || !uf || !cidade || !bairro || !rua || !numeroCasa) {
             return res.status(400).json({
                 message: 'Todos os campos são obrigatórios!',
                 error: true
@@ -138,8 +138,14 @@ class UsuarioController {
         const usuario = await client.usuario.create({
             data: {
                 nome,
+                sobrenome,
                 email,
-                password: hashPassword
+                senha: hashSenha,
+                uf,
+                cidade,
+                bairro,
+                rua,
+                numeroCasa: parseInt(numeroCasa)
             }
         });
 

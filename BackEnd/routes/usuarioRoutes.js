@@ -13,6 +13,6 @@ usuarioRoutes.patch('/perfil', loginMiddleware, UsuarioController.atualizarUsuar
 
 usuarioRoutes.post('/auth/login', UsuarioController.loginUsuario);
 
-usuarioRoutes.post('/auth/cadastro', UsuarioController.cadastroUsuario);
+usuarioRoutes.post('/auth/cadastro', UsuarioController.cadastrarUsuario);
 
 export default usuarioRoutes;

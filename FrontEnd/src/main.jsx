@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import UserPerfil from './pages/UserPerfil';
-import RegisterUser from './pages/RegisterUser';
+import CadastrarUsuario from './pages/CadastrarUsuario';
 import LoginUser from './pages/LoginUser';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,7 +14,7 @@ root.render(
         <Route path='/' element={<Home />} />
         <Route path='/user'>
           <Route path='' element={<UserPerfil />} />
-          <Route path='register' element={<RegisterUser />} />
+          <Route path='register' element={<CadastrarUsuario />} />
           <Route path='login' element={<LoginUser />} />
         </Route>
       </Routes>

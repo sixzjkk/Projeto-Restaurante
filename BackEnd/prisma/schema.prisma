@@ -16,8 +16,14 @@ datasource db {
 model Usuario {
   id Int @id @default(autoincrement())
   nome String
+  sobrenome String
   email String @unique
-  password String
+  senha String
+  uf String
+  cidade String
+  bairro String
+  rua String
+  numeroCasa Int
   reservas Reserva[]
   tipo String @default("cliente")
 }
