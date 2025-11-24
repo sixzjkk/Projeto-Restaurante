@@ -91,7 +91,7 @@
 .textPrincipal {
   font-family: 'Cormorant Garamond';
   font-weight: 700;
-  font-size: clamp(2rem, 6vw, 4rem); /* responsivo */
+  font-size: clamp(2rem, 6vw, 4rem);
   line-height: 1.2;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.8);
