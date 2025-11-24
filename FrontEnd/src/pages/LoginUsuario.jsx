@@ -1,25 +1,26 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 import bgImg from '../assets/background-fire.png';
 import styles from '../styles/auth.module.css';
 
-export default function LoginUser() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+export default function LoginUsuario() {
+    const { register, handleSubmit, formState: { error } } = useForm();
 
     const navigate = useNavigate();
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const handleLogin = async (data) => {
+        const { email, senha } = data;
         try {
             const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     email,
-                    password
+                    senha
                 })
             });
+            
+            console.log(res)
 
             const data = await res.json();
 
@@ -41,21 +42,17 @@ export default function LoginUser() {
             <Link className={styles.voltar} to='/'>ᐸ</Link>
             <div className={styles.line}></div>
             <h1 className={styles.title}>Login</h1>
-            <form className={styles.form} onSubmit={handleSubmit}>
+            <form className={styles.form} onSubmit={handleSubmit(handleLogin)}>
                 <input className={styles.input}
+                    {...register('email', { required: true })}
                     placeholder='E-mail: '
-                    type='email'
-                    onChange={event => setEmail(event.target.value)}
-                    value={email}
                 />
                 <input className={styles.input}
+                    {...register('senha', { required: true })}
                     placeholder='Senha: '
-                    type='password'
-                    onChange={event => setPassword(event.target.value)}
-                    value={password}
                 />
                 <div className={styles.borderButton}>
-                    <button className={styles.buttonLoginRegister}>Login</button>
+                    <button className={styles.buttonLoginRegister} type='submit'>Login</button>
                 </div>
                 <p className={styles.textLoginRegister}>Não possui cadastro? <Link className={styles.link} to='/user/register'>Criar conta</Link></p>
             </form>

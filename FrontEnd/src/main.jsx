@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import UserPerfil from './pages/UserPerfil';
 import CadastrarUsuario from './pages/CadastrarUsuario';
-import LoginUser from './pages/LoginUser';
+import LoginUsuario from './pages/LoginUsuario';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,7 +15,7 @@ root.render(
         <Route path='/user'>
           <Route path='' element={<UserPerfil />} />
           <Route path='register' element={<CadastrarUsuario />} />
-          <Route path='login' element={<LoginUser />} />
+          <Route path='login' element={<LoginUsuario />} />
         </Route>
       </Routes>
     </BrowserRouter>

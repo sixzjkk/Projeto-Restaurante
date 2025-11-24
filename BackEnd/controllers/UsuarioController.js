@@ -76,7 +76,9 @@ class UsuarioController {
     }
 
     static async loginUsuario(req, res) {
-        const { email, password } = req.body;
+        const { email, senha } = req.body;
+
+        console.log(email, senha)
 
         const usuario = await client.usuario.findUnique({
             where: {
@@ -91,9 +93,9 @@ class UsuarioController {
             })
         }
 
-        const isCorrectPassword = bcryptjs.compareSync(password, usuario.password);
+        const isSenhaCorreta = bcryptjs.compareSync(senha, usuario.senha);
 
-        if (!isCorrectPassword) {
+        if (!isSenhaCorreta) {
             return res.status(401).json({
                 message: 'Senha incorreta!',
                 error: true
