@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Home';
-import UserPerfil from './pages/UserPerfil';
+import PerfilUsuario from './pages/PerfilUsuario';
 import CadastrarUsuario from './pages/CadastrarUsuario';
 import Cardapio  from './pages/Cardapio';
 import LoginUsuario from './pages/LoginUsuario';
@@ -15,7 +15,7 @@ root.render(
         <Route path='/' element={<Home />} />
         <Route path='cardapio' element={<Cardapio />} />
         <Route path='/user'>
-          <Route path='' element={<UserPerfil />} />
+          <Route path='' element={<PerfilUsuario />} />
           <Route path='register' element={<CadastrarUsuario />} />
           <Route path='login' element={<LoginUsuario />} />
         </Route>

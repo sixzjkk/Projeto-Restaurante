@@ -6,12 +6,7 @@ const client = new PrismaClient();
 
 class UsuarioController {
     static async buscarTodosUsuarios(req, res) {
-        const usuariosComSenhas = await client.usuario.findMany({});
-
-        const usuarios = usuariosComSenhas.map(usuario => {
-            usuario.password = undefined;
-            return usuario;
-        });
+        const usuarios = await client.usuario.findMany({});
 
         return res.status(200).json({
             message: 'Usuário buscado!',
@@ -27,7 +22,7 @@ class UsuarioController {
             }
         });
 
-        usuario.password = undefined;
+        console.log(usuario)
 
         return res.status(200).json({
             message: 'Usuário buscado!',
@@ -37,9 +32,9 @@ class UsuarioController {
     }
 
     static async atualizarUsuario(req, res) {
-        const { nome, email } = req.body;
+        const { nome, sobrenome, email, uf, cidade, bairro, rua, numeroCasa } = req.body;
 
-        if (!nome || !email) {
+        if (!nome || !sobrenome || !email || !uf || !cidade || !bairro || !rua || !numeroCasa) {
             return res.status(400).json({
                 message: 'Todos os campos são obrigatórios!',
                 error: true
@@ -65,7 +60,13 @@ class UsuarioController {
             },
             data: {
                 nome,
-                email
+                sobrenome,
+                email,
+                uf,
+                cidade,
+                bairro,
+                rua,
+                numeroCasa: parseInt(numeroCasa)
             }
         });
 
@@ -77,8 +78,6 @@ class UsuarioController {
 
     static async loginUsuario(req, res) {
         const { email, senha } = req.body;
-
-        console.log(email, senha)
 
         const usuario = await client.usuario.findUnique({
             where: {

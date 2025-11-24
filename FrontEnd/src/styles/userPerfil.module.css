@@ -83,7 +83,7 @@ body {
     margin-top: 40px;
 }
 
-.inputEditar {
+.input {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -100,7 +100,7 @@ body {
     color: #ffffffca;
 }
 
-.inputEditar::placeholder {
+.input::placeholder {
     color: #ffffffca;
     text-transform: uppercase;
     font-family: "Proza Libre", sans-serif;
