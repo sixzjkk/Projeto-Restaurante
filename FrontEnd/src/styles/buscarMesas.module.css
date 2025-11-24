@@ -1,0 +1,67 @@
+.containerPrincipalQuarto {
+    background-color: #F8F1EA;
+    height: 900px;
+}
+
+.containerBuscarMesas {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.containerTextBuscarMesas {
+    display: flex;
+    flex-direction: column;
+}
+
+.titleBuscarMesas {
+    font-family: 'Proza Libre';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 130px;
+    line-height: 120px;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 80px;
+    color: rgba(182, 45, 0, 0.1);
+}
+
+.subtitleBuscarMesas {
+    font-family: 'Proza Libre';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 120px;
+    text-transform: uppercase;
+    color: #110901;
+    text-align: center;
+    margin-top: -90px;
+}
+
+.imageStar {
+    margin-top: -60px;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.listaMesas td {
+    border-bottom: 1px solid rgba(170, 52, 13, 0.4);
+    padding: 0 20px 0 20px;
+}
+
+.mesas {
+    font-family: 'Proza Libre';
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 70px;
+    text-transform: uppercase;
+    color: #000000;
+}
