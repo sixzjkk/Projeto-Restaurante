@@ -42,7 +42,6 @@ export default function PerfilUsuario() {
             }
 
             alert(data.message);
-            window.location.reload();
         } catch (err) {
             alert(err);
         }
@@ -65,12 +64,8 @@ export default function PerfilUsuario() {
                     throw new Error(data.message);
                 }
 
-                console.log(data)
                 reset(data.usuario);
-                setCarregando(false);
-
-                console.log(watch('tipo'))
-                
+                setCarregando(false);      
             } catch (err) {
                 alert(err);
                 localStorage.removeItem('authorization');

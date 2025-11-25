@@ -5,29 +5,37 @@ export default function CadastrarReserva() {
     const { register, handleSubmit, watch, formState: { error } } = useForm();
     const [mesas, setMesas] = useState();
 
-    const handleCadastrar = async (data) => {
+    const handleCadastrar = async (formData) => {
+        const { mesa_id, dataReserva, n_pessoas } = formData;
+
         try {
             const token = localStorage.getItem('authorization');
 
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/reservas/novos`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/reservas/novo`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
-
+                    mesa_id,
+                    data: dataReserva,
+                    n_pessoas
                 })
             });
 
-            console.log(res);
+            const data = await res.json();
+
+            if (data.error) {
+                throw new Error(data.message);
+            }
+
+            alert(data.message);
         } catch (err) {
             alert(err);
         }
     }
 
-    
-    
     useEffect(() => {
         const buscar = async () => {
             try {
@@ -38,10 +46,10 @@ export default function CadastrarReserva() {
                 console.log(err);
             }
         };
-        
+
         buscar();
     }, []);
-    
+
     if (!mesas) {
         return <h2>Carregando...</h2>;
     }
@@ -49,13 +57,13 @@ export default function CadastrarReserva() {
     const mesaSelecionada = mesas.find(
         (m) => m.id === Number(watch('mesa_id'))
     );
-    
+
     return (
         <div>
             <form onSubmit={handleSubmit(handleCadastrar)}>
                 <select className=''
                     {...register('mesa_id', { required: true })}
-                    >
+                >
                     {
                         mesas.map((mesa) =>
                             <option key={mesa.id} value={mesa.id}>
@@ -65,7 +73,7 @@ export default function CadastrarReserva() {
                     }
                 </select>
                 <input className=''
-                    {...register('data', { required: true })}
+                    {...register('dataReserva', { required: true })}
                     type='date'
                 />
                 <select className=''
@@ -78,6 +86,9 @@ export default function CadastrarReserva() {
                             </option>
                         ))}
                 </select>
+                <button className='' type='submit'>
+                    Reservar Mesa
+                </button>
             </form>
         </div>
     );
