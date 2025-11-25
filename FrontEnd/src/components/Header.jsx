@@ -22,8 +22,8 @@ export default function Header() {
         element.scrollIntoView({ behavior: 'smooth' });
     }
 
-    const scrollReservation = () => {
-        const element = document.getElementById('reservation');
+    const scrollCadastrarReserva = () => {
+        const element = document.getElementById('cadastrarReserva');
         element.scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -34,7 +34,7 @@ export default function Header() {
                 <p className={styles.textMenu} onClick={scrollHome}>Home</p>
                 <p className={styles.textMenu} onClick={scrollAboutUs}>Sobre Nós</p>
                 <p className={styles.textMenu} onClick={scrollBuscarMesas}>Consultar Mesas</p>
-                <p className={styles.textMenu} onClick={scrollReservation}>Reserve uma Mesa</p>
+                <p className={styles.textMenu} onClick={scrollCadastrarReserva}>Reserve uma Mesa</p>
                 <Link to='cardapio'><p className={styles.textMenu}>Cardápio</p></Link>
             </div>
             <div className={styles.auth}>

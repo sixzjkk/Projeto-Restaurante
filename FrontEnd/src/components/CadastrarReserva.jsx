@@ -1,5 +1,7 @@
+import styles from '../styles/cadastrarReserva.module.css';
 import { useEffect, useState } from 'react';
 import { useForm, Watch } from 'react-hook-form';
+import bgImg from '../assets/background-fire.png';
 
 export default function CadastrarReserva() {
     const { register, handleSubmit, watch, formState: { error } } = useForm();
@@ -59,37 +61,52 @@ export default function CadastrarReserva() {
     );
 
     return (
-        <div>
-            <form onSubmit={handleSubmit(handleCadastrar)}>
-                <select className=''
-                    {...register('mesa_id', { required: true })}
-                >
-                    {
-                        mesas.map((mesa) =>
-                            <option key={mesa.id} value={mesa.id}>
-                                Mesa {mesa.id}
-                            </option>
-                        )
-                    }
-                </select>
-                <input className=''
-                    {...register('dataReserva', { required: true })}
-                    type='date'
-                />
-                <select className=''
-                    {...register('n_pessoas', { required: true })}
-                >
-                    {mesaSelecionada &&
-                        Array.from({ length: mesaSelecionada.n_lugares }).map((_, i) => (
-                            <option key={i} value={i + 1}>
-                                {i + 1}
-                            </option>
-                        ))}
-                </select>
-                <button className='' type='submit'>
-                    Reservar Mesa
-                </button>
+        <div id='cadastrarReserva' className={styles.background} style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${bgImg})` }}>
+            <div className={styles.line}></div>
+            <h1 className={styles.titleReservation}>Reserve uma mesa</h1>
+            <form className={styles.form} onSubmit={handleSubmit(handleCadastrar)}>
+                <div className={styles.selectWrapper}>
+                    <select className={styles.input}
+                        {...register('mesa_id', { required: true })}
+                    >
+                        {
+                            mesas.map((mesa) =>
+                                <option key={mesa.id} value={mesa.id}>
+                                    Mesa {mesa.id}
+                                </option>
+                            )
+                        }
+                    </select>
+                </div>
+                <div className={styles.selectWrapperDate}>
+                    <input className={styles.input}
+                        {...register('dataReserva', { required: true })}
+                        type='date'
+                    />
+                </div>
+                <div className={styles.selectWrapper}>
+                    <select
+                        className={styles.input}
+                        {...register('n_pessoas', { required: true })}
+                        defaultValue=""
+                    >
+                        {mesaSelecionada &&
+                            Array.from({ length: mesaSelecionada.n_lugares }).map((_, i) => (
+                                <option key={i} value={i + 1}>
+                                    {i + 1} pessoa{i > 0 ? 's' : ''}
+                                </option>
+                            ))
+                        }
+                    </select>
+
+                </div>
+                <div className={styles.borderButton}>
+                    <button type='submit' className={styles.buttonReservation}>
+                        Reservar
+                    </button>
+                </div>
             </form>
         </div>
     );
 }
+

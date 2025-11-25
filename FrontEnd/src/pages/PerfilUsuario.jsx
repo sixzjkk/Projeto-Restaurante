@@ -130,11 +130,11 @@ export default function PerfilUsuario() {
                             <>
                                 <p className={styles.nomeUsuario}>{watch('nome')}</p>
                                 <p className={styles.emailUsuario}>{watch('sobrenome')}</p>
-                                <p className={styles.nomeUsuario}>{watch('email')}</p>
+                                <p className={styles.emailUsuario}>{watch('email')}</p>
                                 <p className={styles.emailUsuario}>{watch('uf')}</p>
-                                <p className={styles.nomeUsuario}>{watch('cidade')}</p>
+                                <p className={styles.emailUsuario}>{watch('cidade')}</p>
                                 <p className={styles.emailUsuario}>{watch('bairro')}</p>
-                                <p className={styles.nomeUsuario}>{watch('rua')}</p>
+                                <p className={styles.emailUsuario}>{watch('rua')}</p>
                                 <p className={styles.emailUsuario}>{watch('numeroCasa')}</p>
                                 <div className={styles.borderButton}>
                                     <button className={styles.buttonEditar} onClick={() => setEditando(true)}>Editar</button>
