@@ -88,7 +88,7 @@ export default function CadastrarReserva() {
                     <select
                         className={styles.input}
                         {...register('n_pessoas', { required: true })}
-                        defaultValue=""
+                        defaultValue=''
                     >
                         {mesaSelecionada &&
                             Array.from({ length: mesaSelecionada.n_lugares }).map((_, i) => (

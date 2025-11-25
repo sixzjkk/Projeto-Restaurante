@@ -1,10 +1,15 @@
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import schemaValidacaoUsuario from '../validation/schemaValidacaoUsuario';
 import { useNavigate, Link } from 'react-router-dom';
 import bgImg from '../assets/background-fire.png';
 import styles from '../styles/auth.module.css';
 
 export default function CadastrarUsuario() {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schemaValidacaoUsuario)
+    });
+
     const navigate = useNavigate();
 
     const handleCadastrar = async (data) => {
@@ -53,42 +58,52 @@ export default function CadastrarUsuario() {
 
                 <div className={styles.row}>
                     <input className={styles.input}
-                        {...register('nome', { required: true })}
-                        placeholder="Nome:" />
+                        {...register('nome')}
+                        placeholder='Nome:' />
                     <input className={styles.input}
-                        {...register('sobrenome', { required: true })}
-                        placeholder="Sobrenome:" />
+                        {...register('sobrenome')}
+                        placeholder='Sobrenome:' />
                 </div>
+                <div>{errors.nome?.message}</div>
+                <div>{errors.sobrenome?.message}</div>
 
                 <input className={styles.input}
-                    {...register('email', { required: true })}
-                    placeholder="E-mail:" />
+                    {...register('email')}
+                    placeholder='E-mail:' />
+                <div>{errors.email?.message}</div>
 
                 <input className={styles.input}
-                    {...register('senha', { required: true })}
-                    placeholder="Senha:" />
+                    {...register('senha')}
+                    placeholder='Senha:' />
+                <div>{errors.senha?.message}</div>
 
                 <div className={styles.row}>
                     <input className={styles.input}
-                        {...register('uf', { required: true })}
-                        placeholder="UF:" />
+                        {...register('uf')}
+                        placeholder='UF:' />
                     <input className={styles.input}
-                        {...register('cidade', { required: true })}
-                        placeholder="Cidade:" />
+                        {...register('cidade')}
+                        placeholder='Cidade:' />
                 </div>
+                <div>{errors.uf?.message}</div>
+                <div>{errors.cidade?.message}</div>
 
                 <div className={styles.row}>
                     <input className={styles.input}
-                        {...register('bairro', { required: true })}
-                        placeholder="Bairro:" />
+                        {...register('bairro')}
+                        placeholder='Bairro:' />
+
                     <input className={styles.input}
-                        {...register('rua', { required: true })}
-                        placeholder="Rua:" />
+                        {...register('rua')}
+                        placeholder='Rua:' />
                 </div>
+                <div>{errors.bairro?.message}</div>
+                <div>{errors.rua?.message}</div>
 
                 <input className={styles.input}
-                    {...register('numeroCasa', { required: true })}
-                    placeholder="Nº:" />
+                    {...register('numeroCasa')}
+                    placeholder='Nº:' />
+                <div>{errors.numeroCasa?.message}</div>
 
                 <div className={styles.borderButton}>
                     <button className={styles.buttonLoginRegister} type='submit'>
