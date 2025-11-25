@@ -9,22 +9,22 @@ export default function Header() {
 
     const scrollHome = () => {
         const element = document.getElementById('home');
-        element.scrollIntoView({ behavior: "smooth" });
+        element.scrollIntoView({ behavior: 'smooth' });
     }
 
     const scrollAboutUs = () => {
         const element = document.getElementById('aboutUs');
-        element.scrollIntoView({ behavior: "smooth" });
+        element.scrollIntoView({ behavior: 'smooth' });
     }
 
     const scrollBuscarMesas = () => {
         const element = document.getElementById('buscarMesas');
-        element.scrollIntoView({ behavior: "smooth" });
+        element.scrollIntoView({ behavior: 'smooth' });
     }
 
     const scrollReservation = () => {
         const element = document.getElementById('reservation');
-        element.scrollIntoView({ behavior: "smooth" });
+        element.scrollIntoView({ behavior: 'smooth' });
     }
 
     return (

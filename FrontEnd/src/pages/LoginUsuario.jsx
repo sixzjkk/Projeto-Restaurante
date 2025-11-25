@@ -28,7 +28,7 @@ export default function LoginUsuario() {
                 throw new Error(data.message);
             }
 
-            localStorage.setItem("authorization", data.token);
+            localStorage.setItem('authorization', data.token);
             alert(data.message);
             navigate('/');
         } catch (err) {

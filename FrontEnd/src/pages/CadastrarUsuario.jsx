@@ -27,14 +27,14 @@ export default function CadastrarUsuario() {
                 })
             });
 
-            const dataResponse = await res.json();
+            const data = await res.json();
 
-            if (dataResponse.error) {
-                throw new Error(dataResponse.message);
+            if (data.error) {
+                throw new Error(data.message);
             }
 
-            localStorage.setItem("authorization", dataResponse.token);
-            alert(dataResponse.message);
+            localStorage.setItem('authorization', data.token);
+            alert(data.message);
             navigate('/');
         } catch (err) {
             alert(err);
@@ -42,8 +42,8 @@ export default function CadastrarUsuario() {
     }
 
     return (
-        <div className={styles.background} style={{ 
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${bgImg})` 
+        <div className={styles.background} style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${bgImg})`
         }}>
             <Link className={styles.voltar} to='/'>ᐸ</Link>
             <div className={styles.lineRegister}></div>
@@ -52,10 +52,10 @@ export default function CadastrarUsuario() {
             <form className={styles.form} onSubmit={handleSubmit(handleCadastrar)}>
 
                 <div className={styles.row}>
-                    <input className={styles.input} 
+                    <input className={styles.input}
                         {...register('nome', { required: true })}
                         placeholder="Nome:" />
-                    <input className={styles.input} 
+                    <input className={styles.input}
                         {...register('sobrenome', { required: true })}
                         placeholder="Sobrenome:" />
                 </div>

@@ -3,6 +3,7 @@ import Footer from './components/Footer';
 import AboutUs from './components/AboutUs';
 import Culinary from './components/Culinary';
 import BuscarMesas from './components/BuscarMesas';
+import CadastrarReserva from './components/CadastrarReserva';
 import styles from './styles/home.module.css';
 import img from './assets/image-home.png';
 
@@ -36,12 +37,13 @@ export default function App() {
 
                     <div className={styles.Containerimage}>
                         <div className={styles.degrade}></div>
-                        <img className={styles.imageHome} src={img} alt="Imagem principal" />
+                        <img className={styles.imageHome} src={img} alt='Imagem principal' />
                     </div>
                 </div>
                 <AboutUs />
                 <Culinary />
                 <BuscarMesas />
+                <CadastrarReserva />
             </div>
             <Footer />
         </>
