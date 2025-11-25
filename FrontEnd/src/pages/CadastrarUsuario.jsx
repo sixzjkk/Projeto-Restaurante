@@ -64,18 +64,20 @@ export default function CadastrarUsuario() {
                         {...register('sobrenome')}
                         placeholder='Sobrenome:' />
                 </div>
-                <div>{errors.nome?.message}</div>
-                <div>{errors.sobrenome?.message}</div>
+                <div className={styles.errors}>
+                    <div className={styles.error}>{errors.nome?.message}</div>
+                    <div id={styles.errorColumn} className={styles.error}>{errors.sobrenome?.message}</div>
+                </div>
 
                 <input className={styles.input}
                     {...register('email')}
                     placeholder='E-mail:' />
-                <div>{errors.email?.message}</div>
+                <div className={styles.error}>{errors.email?.message}</div>
 
                 <input className={styles.input}
                     {...register('senha')}
                     placeholder='Senha:' />
-                <div>{errors.senha?.message}</div>
+                <div className={styles.error}>{errors.senha?.message}</div>
 
                 <div className={styles.row}>
                     <input className={styles.input}
@@ -85,8 +87,10 @@ export default function CadastrarUsuario() {
                         {...register('cidade')}
                         placeholder='Cidade:' />
                 </div>
-                <div>{errors.uf?.message}</div>
-                <div>{errors.cidade?.message}</div>
+                <div className={styles.errors}>
+                    <div className={styles.error}>{errors.uf?.message}</div>
+                    <div id={styles.errorColumn} className={styles.error}>{errors.cidade?.message}</div>
+                </div>
 
                 <div className={styles.row}>
                     <input className={styles.input}
@@ -97,13 +101,15 @@ export default function CadastrarUsuario() {
                         {...register('rua')}
                         placeholder='Rua:' />
                 </div>
-                <div>{errors.bairro?.message}</div>
-                <div>{errors.rua?.message}</div>
+                <div className={styles.errors}>
+                    <div className={styles.error}>{errors.bairro?.message}</div>
+                    <div id={styles.errorColumn} className={styles.error}>{errors.rua?.message}</div>
+                </div>
 
                 <input className={styles.input}
                     {...register('numeroCasa')}
                     placeholder='Nº:' />
-                <div>{errors.numeroCasa?.message}</div>
+                <div className={styles.error}>{errors.numeroCasa?.message}</div>
 
                 <div className={styles.borderButton}>
                     <button className={styles.buttonLoginRegister} type='submit'>

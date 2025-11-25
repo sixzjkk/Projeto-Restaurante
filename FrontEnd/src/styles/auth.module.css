@@ -108,7 +108,6 @@ body {
 
 .textLoginRegister {
     font-family: "Proza Libre", sans-serif;
-    font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 21px;
@@ -121,4 +120,22 @@ body {
     color: #B62D00;
     text-transform: uppercase;
     font-weight: 600;
+}
+
+.errors {
+    display: flex;
+    width: 100%;
+}
+
+.error {
+    width: 100%;
+    font-size: 12px;
+    margin-top: -15px;
+    margin-bottom: 10px;
+    font-family: "Proza Libre", sans-serif;
+    font-size: 12px;
+}
+
+#errorColumn {
+    margin-left: 25px;
 }
