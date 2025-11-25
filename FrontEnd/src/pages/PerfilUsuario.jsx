@@ -65,7 +65,7 @@ export default function PerfilUsuario() {
                 }
 
                 reset(data.usuario);
-                setCarregando(false);      
+                setCarregando(false);
             } catch (err) {
                 alert(err);
                 localStorage.removeItem('authorization');
@@ -92,7 +92,6 @@ export default function PerfilUsuario() {
                                 <input className={styles.input}
                                     {...register('nome', { required: true })}
                                     placeholder='Nome: '
-                                    value={watch('nome')}
                                 />
                                 <input className={styles.input}
                                     {...register('sobrenome', { required: true })}
@@ -142,8 +141,18 @@ export default function PerfilUsuario() {
                             </>
                     }
                     <p className={styles.tipoUsuario}>{watch('tipo').toUpperCase()[0] + watch('tipo').slice(1)}</p>
+                    <div className={styles.borderButton}>
+                        <button className={styles.buttonEditar}
+
+                            onClick={() => {
+                                localStorage.setItem('authorization', '');
+                                navigate('/');
+                            }}>
+                            Sair
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

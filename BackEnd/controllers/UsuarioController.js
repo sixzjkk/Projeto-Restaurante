@@ -22,8 +22,6 @@ class UsuarioController {
             }
         });
 
-        console.log(usuario)
-
         return res.status(200).json({
             message: 'Usuário buscado!',
             error: false,

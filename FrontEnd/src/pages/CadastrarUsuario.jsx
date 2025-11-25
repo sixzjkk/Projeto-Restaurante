@@ -1,13 +1,13 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import schemaValidacaoUsuario from '../validation/schemaValidacaoUsuario';
+import { schemaCadastrarUsuario } from '../validation/schemaValidacaoUsuario';
 import { useNavigate, Link } from 'react-router-dom';
 import bgImg from '../assets/background-fire.png';
 import styles from '../styles/auth.module.css';
 
 export default function CadastrarUsuario() {
     const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(schemaValidacaoUsuario)
+        resolver: yupResolver(schemaCadastrarUsuario)
     });
 
     const navigate = useNavigate();

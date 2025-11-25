@@ -1,15 +1,20 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schemaLoginUsuario } from '../validation/schemaValidacaoUsuario';
 import bgImg from '../assets/background-fire.png';
 import styles from '../styles/auth.module.css';
 
 export default function LoginUsuario() {
-    const { register, handleSubmit, formState: { error } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schemaLoginUsuario)
+    });
 
     const navigate = useNavigate();
 
     const handleLogin = async (data) => {
         const { email, senha } = data;
+
         try {
             const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
                 method: 'POST',
@@ -19,8 +24,6 @@ export default function LoginUsuario() {
                     senha
                 })
             });
-            
-            console.log(res)
 
             const data = await res.json();
 
@@ -47,10 +50,12 @@ export default function LoginUsuario() {
                     {...register('email', { required: true })}
                     placeholder='E-mail: '
                 />
+                <div>{errors.email?.message}</div>
                 <input className={styles.input}
                     {...register('senha', { required: true })}
                     placeholder='Senha: '
                 />
+                <div>{errors.senha?.message}</div>
                 <div className={styles.borderButton}>
                     <button className={styles.buttonLoginRegister} type='submit'>Login</button>
                 </div>

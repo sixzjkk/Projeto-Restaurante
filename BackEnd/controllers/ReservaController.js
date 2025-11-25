@@ -4,7 +4,7 @@ const client = new PrismaClient();
 
 class ReservaController {
     static async fazerReserva(req, res) {
-        const { mesa_id, data, n_pessoas } = req.body;
+        const { mesa_id, contato, data, horario, n_pessoas } = req.body;
 
         if (!mesa_id || !data || !n_pessoas) {
             return res.status(400).json({

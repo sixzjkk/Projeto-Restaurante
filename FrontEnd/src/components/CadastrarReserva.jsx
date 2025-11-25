@@ -1,14 +1,18 @@
-import styles from '../styles/cadastrarReserva.module.css';
 import { useEffect, useState } from 'react';
-import { useForm, Watch } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schemaCadastrarReserva } from '../validation/schemaValidacaoReserva';
 import bgImg from '../assets/background-fire.png';
+import styles from '../styles/cadastrarReserva.module.css';
 
 export default function CadastrarReserva() {
-    const { register, handleSubmit, watch, formState: { error } } = useForm();
+    const { register, handleSubmit, watch, formState: { errors } } = useForm({
+        resolver: yupResolver(schemaCadastrarReserva)
+    });
     const [mesas, setMesas] = useState();
 
     const handleCadastrar = async (formData) => {
-        const { mesa_id, dataReserva, n_pessoas } = formData;
+        const { mesa_id, contato, dataReserva, horarioReserva, n_pessoas } = formData;
 
         try {
             const token = localStorage.getItem('authorization');
@@ -21,7 +25,9 @@ export default function CadastrarReserva() {
                 },
                 body: JSON.stringify({
                     mesa_id,
+                    contato,
                     data: dataReserva,
+                    horario: horarioReserva,
                     n_pessoas
                 })
             });
@@ -77,18 +83,29 @@ export default function CadastrarReserva() {
                             )
                         }
                     </select>
+                    <div>{errors.mesa_id?.message}</div>
                 </div>
+                <input className={styles.input}
+                    {...register('contato', { required: true })}
+                    placeholder='(11) 99999-9999'
+                />
+                <div>{errors.contato?.message}</div>
                 <div className={styles.selectWrapperDate}>
                     <input className={styles.input}
                         {...register('dataReserva', { required: true })}
                         type='date'
                     />
+                    <div>{errors.dataReserva?.message}</div>
                 </div>
+                <input className={styles.input}
+                    {...register('horarioReserva', { required: true })}
+                    type='time'
+                />
+                <div>{errors.horarioReserva?.message}</div>
                 <div className={styles.selectWrapper}>
                     <select
                         className={styles.input}
                         {...register('n_pessoas', { required: true })}
-                        defaultValue=''
                     >
                         {mesaSelecionada &&
                             Array.from({ length: mesaSelecionada.n_lugares }).map((_, i) => (
@@ -98,7 +115,7 @@ export default function CadastrarReserva() {
                             ))
                         }
                     </select>
-
+                    <div>{errors.n_pessoas?.message}</div>
                 </div>
                 <div className={styles.borderButton}>
                     <button type='submit' className={styles.buttonReservation}>
