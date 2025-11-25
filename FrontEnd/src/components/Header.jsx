@@ -34,8 +34,8 @@ export default function Header() {
                 <p className={styles.textMenu} onClick={scrollHome}>Home</p>
                 <p className={styles.textMenu} onClick={scrollAboutUs}>Sobre Nós</p>
                 <p className={styles.textMenu} onClick={scrollBuscarMesas}>Consultar Mesas</p>
-                <Link to='cardapio'><p className={styles.textMenu}>Cardápio</p></Link>
                 <p className={styles.textMenu} onClick={scrollReservation}>Reserve uma Mesa</p>
+                <Link to='cardapio'><p className={styles.textMenu}>Cardápio</p></Link>
             </div>
             <div className={styles.auth}>
                 {
