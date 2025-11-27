@@ -8,13 +8,13 @@ export default function CadastrarMesa() {
         resolver: yupResolver(schemaCadastrarMesa)
     });
 
-    const handleCadastrarMesa = async (data) => {
-        const { codigo, n_lugares } = data;
+    const handleCadastrarMesa = async (dataForm) => {
+        const { codigo, n_lugares } = dataForm;
 
         const token = localStorage.getItem('authorization');
 
         try {
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/mesas/novo`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/mesas/novo`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -26,14 +26,14 @@ export default function CadastrarMesa() {
                 })
             });
 
-            const data = await res.json();
+            const responseBody = await response.json();
 
-            if (data.error) {
-                throw new Error(data.message);
+            if (responseBody.error) {
+                throw new Error(responseBody.message);
             }
 
             reset();
-            alert(data.message);
+            alert(responseBody.message);
         } catch (err) {
             alert(err);
         }
@@ -44,7 +44,7 @@ export default function CadastrarMesa() {
             <h1 className={styles.titulo}>
                 Cadastrar Mesas
             </h1>
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleSubmit(handleCadastrarMesa)}>
                 <input className={styles.input}
                     {...register('codigo')}
                     placeholder='Código: '
@@ -56,7 +56,7 @@ export default function CadastrarMesa() {
                 />
                 <div className={styles.error}>{errors.n_lugares?.message}</div>
                 <div className={styles.borderButton}>
-                    <button className={styles.buttonCadastrarMesa} onClick={handleSubmit(handleCadastrarMesa)}>Cadastrar</button>
+                    <button className={styles.buttonCadastrarMesa} type='submit'>Cadastrar</button>
                 </div>
             </form>
         </div>

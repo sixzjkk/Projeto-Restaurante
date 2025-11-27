@@ -1,7 +1,7 @@
-import styles from '../styles/aboutus.module.css';
 import imgChef from '../assets/image-chef.png';
 import imgStar from '../assets/image-star.png';
 import imgChefCozinha from '../assets/image-chefCozinha.png';
+import styles from '../styles/aboutus.module.css';
 
 export default function AboutUs() {
     return (

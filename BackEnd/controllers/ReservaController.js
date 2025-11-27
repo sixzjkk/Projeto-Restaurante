@@ -13,6 +13,19 @@ class ReservaController {
             });
         }
 
+        const usuario = await client.usuario.findUnique({
+            where: {
+                id: req.usuarioId
+            }
+        });
+
+        if (usuario.tipo == 'adm') {
+            return res.status(403).json({
+                message: 'Administrador não pode fazer reservas, entre em uma conta comum!',
+                error: true
+            });
+        }
+
         const dataISO = new Date(`${data}T${horario}:00`).toISOString();
 
         const reserva = await client.reserva.create({

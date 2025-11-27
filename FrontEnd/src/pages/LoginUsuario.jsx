@@ -12,11 +12,11 @@ export default function LoginUsuario() {
 
     const navigate = useNavigate();
 
-    const handleLoginUsuario = async (data) => {
-        const { email, senha } = data;
+    const handleLoginUsuario = async (dataForm) => {
+        const { email, senha } = dataForm;
 
         try {
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -25,14 +25,14 @@ export default function LoginUsuario() {
                 })
             });
 
-            const data = await res.json();
+            const responseBody = await res.json();
 
-            if (data.error) {
-                throw new Error(data.message);
+            if (responseBody.error) {
+                throw new Error(responseBody.message);
             }
 
-            localStorage.setItem('authorization', data.token);
-            alert(data.message);
+            localStorage.setItem('authorization', responseBody.token);
+            alert(responseBody.message);
             navigate('/');
         } catch (err) {
             alert(err);

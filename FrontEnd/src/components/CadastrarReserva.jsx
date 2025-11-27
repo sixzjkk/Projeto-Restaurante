@@ -11,13 +11,13 @@ export default function CadastrarReserva() {
     });
     const [mesas, setMesas] = useState();
 
-    const handleCadastrarReserva = async (formData) => {
-        const { mesa_id, contato, dataReserva, horarioReserva, n_pessoas } = formData;
+    const handleCadastrarReserva = async (dataForm) => {
+        const { mesa_id, contato, dataReserva, horarioReserva, n_pessoas } = dataForm;
 
         try {
             const token = localStorage.getItem('authorization');
 
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/reservas/novo`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/reservas/novo`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -32,13 +32,13 @@ export default function CadastrarReserva() {
                 })
             });
 
-            const data = await res.json();
+            const responseBody = await response.json();
 
-            if (data.error) {
-                throw new Error(data.message);
+            if (responseBody.error) {
+                throw new Error(responseBody.message);
             }
 
-            alert(data.message);
+            alert(responseBody.message);
         } catch (err) {
             alert(err);
         }
@@ -47,9 +47,9 @@ export default function CadastrarReserva() {
     useEffect(() => {
         const buscar = async () => {
             try {
-                const res = await fetch(`${import.meta.env.VITE_API_URL}/mesas`);
-                const data = await res.json();
-                setMesas(data.mesas);
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/mesas`);
+                const responseBody = await res.json();
+                setMesas(responseBody.mesas);
             } catch (err) {
                 console.log(err);
             }

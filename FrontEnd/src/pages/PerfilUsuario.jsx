@@ -1,3 +1,4 @@
+import BuscarReservas from '../components/BuscarReservas';
 import CadastrarMesa from '../components/CadastrarMesa';
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
@@ -14,13 +15,13 @@ export default function PerfilUsuario() {
 
     const navigate = useNavigate();
 
-    const handleAtualizarUsuario = async (data) => {
-        const { nome, sobrenome, email, uf, cidade, bairro, rua, numeroCasa } = data;
+    const handleAtualizarUsuario = async (dataForm) => {
+        const { nome, sobrenome, email, uf, cidade, bairro, rua, numeroCasa } = dataForm;
 
         try {
             const token = localStorage.getItem('authorization');
 
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/perfil`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/perfil`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -38,13 +39,13 @@ export default function PerfilUsuario() {
                 })
             });
 
-            const data = await res.json();
+            const responseBody = await response.json();
 
-            if (data.error) {
-                throw new Error(data.message);
+            if (responseBody.error) {
+                throw new Error(responseBody.message);
             }
 
-            alert(data.message);
+            alert(responseBody.message);
         } catch (err) {
             alert(err);
         }
@@ -57,22 +58,22 @@ export default function PerfilUsuario() {
             try {
                 const token = localStorage.getItem('authorization');
 
-                const res = await fetch(`${import.meta.env.VITE_API_URL}/perfil`, {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/perfil`, {
                     headers: { 'authorization': `Bearer ${token}` }
                 });
 
-                const data = await res.json();
+                const responseBody = await response.json();
 
-                if (data.error) {
-                    throw new Error(data.message);
+                if (responseBody.error) {
+                    throw new Error(responseBody.message);
                 }
 
-                if (data.usuario.tipo == 'adm') {
+                if (responseBody.usuario.tipo == 'adm') {
                     setIsAdm(true);
                 }
 
-                reset(data.usuario);
-                setReservas(data.usuario.reservas);
+                reset(responseBody.usuario);
+                setReservas(responseBody.usuario.reservas);
                 setCarregando(false);
             } catch (err) {
                 alert(err);
@@ -170,21 +171,7 @@ export default function PerfilUsuario() {
             </div>
             {
                 !isAdm ?
-                    <table className={styles.containerReservas}>
-                        <h1 className={styles.titulo}>Minhas reservas</h1>
-                        <tbody>
-                            {reservas.map(reserva =>
-                                <tr className={styles.tabelaReserva} key={reserva.id}>
-                                    <td className={styles.textoDataReserva}>{reserva.data.split('T')[0]}</td>
-                                    <div className={styles.mesaeReserva}>
-                                        <td className={styles.textoReserva}>Mesa {reserva.mesa_id}</td>
-                                        <p className={styles.textoDivisao}>-</p>
-                                        <td className={styles.textoReserva}>Reserva {reserva.id}</td>
-                                    </div>
-                                </tr>
-                            )}
-                        </tbody>
-                    </table>
+                    <BuscarReservas reservas={reservas} />
                     :
                     <CadastrarMesa />
             }

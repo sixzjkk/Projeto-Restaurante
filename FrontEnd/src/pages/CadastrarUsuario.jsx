@@ -12,11 +12,11 @@ export default function CadastrarUsuario() {
 
     const navigate = useNavigate();
 
-    const handleCadastrarUsuario = async (data) => {
-        const { nome, sobrenome, email, senha, uf, cidade, bairro, rua, numeroCasa } = data;
+    const handleCadastrarUsuario = async (dataForm) => {
+        const { nome, sobrenome, email, senha, uf, cidade, bairro, rua, numeroCasa } = dataForm;
 
         try {
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/cadastro`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/cadastro`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -32,14 +32,14 @@ export default function CadastrarUsuario() {
                 })
             });
 
-            const data = await res.json();
+            const responseBody = await response.json();
 
-            if (data.error) {
-                throw new Error(data.message);
+            if (responseBody.error) {
+                throw new Error(responseBody.message);
             }
 
-            localStorage.setItem('authorization', data.token);
-            alert(data.message);
+            localStorage.setItem('authorization', responseBody.token);
+            alert(responseBody.message);
             navigate('/');
         } catch (err) {
             alert(err);
