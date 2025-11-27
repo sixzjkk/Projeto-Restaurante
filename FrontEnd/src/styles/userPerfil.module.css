@@ -2,6 +2,10 @@ body {
     background-color: #120801;
 }
 
+.container {
+    display: flex;
+}
+
 .voltar {
     position: absolute;
     top: 30px;
@@ -12,38 +16,43 @@ body {
 
 .infoPerfil {
     padding: 3rem;
-    margin-left: 3%;
+    margin-left: 5%;
 }
 
 .nomeUsuario {
     font-family: 'Proza Libre';
-    font-style: normal;
     font-weight: 400;
     font-size: 30px;
     line-height: 41px;
     color: #FFFFFF;
-    margin-bottom: -5px;
+    margin-bottom: 5px;
 }
 
-.emailUsuario {
+.infoUsuario {
     font-family: 'Proza Libre';
-    font-style: normal;
     font-weight: 400;
     font-size: 20px;
-    line-height: 27px;
     color: #FFFFFF;
+    margin: 10px 0 10px 0;
+}
+
+.nomeeSobrenome,
+.ufCidadeeBairro,
+.ruaeNumero {
+    display: flex;
 }
 
 .tipoUsuario {
     font-family: 'Proza Libre';
-    font-style: normal;
     font-weight: 400;
     font-size: 15px;
     line-height: 20px;
     color: #D0CECC;
 }
 
-.buttonEditar, .buttonEditarSalvar, .buttonSair {
+.buttonEditar,
+.buttonEditarSalvar,
+.buttonSair {
     box-sizing: border-box;
     width: 324px;
     height: 40px;
@@ -56,11 +65,13 @@ body {
 }
 
 
-.buttonEditar:hover, .buttonSair:hover {
+.buttonEditar:hover,
+.buttonSair:hover {
     background: linear-gradient(90.88deg, rgba(170, 52, 13, 0.247) -4.95%, rgba(170, 52, 13, 0.115) 105.66%);
 }
 
-.buttonEditar, .buttonSair {
+.buttonEditar,
+.buttonSair {
     background: linear-gradient(90.88deg, rgba(170, 52, 13, 0.032) -4.95%, rgba(170, 52, 13, 0) 105.66%);
 }
 
@@ -77,6 +88,7 @@ body {
     padding: 5px;
     border-radius: 2px;
     width: 324px;
+    margin-top: 20px;
 }
 
 .infoEditar {
@@ -106,3 +118,58 @@ body {
     font-family: "Proza Libre", sans-serif;
 }
 
+.containerReservas {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    margin-left: 10%;
+}
+
+.titulo {
+    font-family: 'Cormorant Garamond';
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 61px;
+    color: #FFFFFF;
+}
+
+.tabelaReserva {
+    box-sizing: border-box;
+    width: 538px;
+    height: 174px;
+    display: flex;
+    flex-direction: column;
+    background: #120801;
+    border-width: 1px 0px;
+    border-style: solid;
+    border-color: #B62D00;
+    margin: 0;
+}
+
+.textoDataReserva {
+    padding-top: 30px;
+    font-family: 'Proza Libre';
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 41px;
+    color: #B62D00;
+}
+
+.textoDivisao,
+.textoReserva {
+    font-family: 'Proza Libre';
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    padding-top: 30px;
+}
+
+.mesaeReserva {
+    display: flex;
+}
+
+.textoDivisao {
+    margin: 0 10px 0 10px;
+}

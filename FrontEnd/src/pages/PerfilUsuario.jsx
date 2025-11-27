@@ -89,7 +89,7 @@ export default function PerfilUsuario() {
     }
 
     return (
-        <div>
+        <div className={styles.container}>
             <Link className={styles.voltar} to='/'>ᐸ</Link>
             <div className={styles.infoPerfil}>
                 <img src={iconUser} />
@@ -135,20 +135,28 @@ export default function PerfilUsuario() {
                             </form>
                             :
                             <>
-                                <p className={styles.nomeUsuario}>{watch('nome')}</p>
-                                <p className={styles.emailUsuario}>{watch('sobrenome')}</p>
-                                <p className={styles.emailUsuario}>{watch('email')}</p>
-                                <p className={styles.emailUsuario}>{watch('uf')}</p>
-                                <p className={styles.emailUsuario}>{watch('cidade')}</p>
-                                <p className={styles.emailUsuario}>{watch('bairro')}</p>
-                                <p className={styles.emailUsuario}>{watch('rua')}</p>
-                                <p className={styles.emailUsuario}>{watch('numeroCasa')}</p>
+                                <div className={styles.nomeeSobrenome}>
+                                    <p className={styles.nomeUsuario}>{watch('nome') + " " + watch('sobrenome')}</p>
+                                </div>
+                                <p className={styles.infoUsuario}>{watch('email')}</p>
+                                <div className={styles.ufCidadeeBairro}>
+                                    <p className={styles.infoUsuario}>{watch('uf')}</p>
+                                    <p className={styles.infoUsuario}>,­</p>
+                                    <p className={styles.infoUsuario}>{watch('cidade')}</p>
+                                    <p className={styles.infoUsuario}>,­</p>
+                                    <p className={styles.infoUsuario}>{watch('bairro')}</p>
+                                </div>
+                                <div className={styles.ruaeNumero}>
+                                    <p className={styles.infoUsuario}>{watch('rua')}</p>
+                                    <p className={styles.infoUsuario}>,­</p>
+                                    <p className={styles.infoUsuario}>{watch('numeroCasa')}</p>
+                                </div>
+                                <p className={styles.tipoUsuario}>{watch('tipo').toUpperCase()[0] + watch('tipo').slice(1)}</p>
                                 <div className={styles.borderButton}>
                                     <button className={styles.buttonEditar} onClick={() => setEditando(true)}>Editar</button>
                                 </div>
                             </>
                     }
-                    <p className={styles.tipoUsuario}>{watch('tipo').toUpperCase()[0] + watch('tipo').slice(1)}</p>
                     <div className={styles.borderButton}>
                         <button className={styles.buttonSair}
                             onClick={() => {
@@ -162,11 +170,17 @@ export default function PerfilUsuario() {
             </div>
             {
                 !isAdm ?
-                    <table>
+                    <table className={styles.containerReservas}>
+                        <h1 className={styles.titulo}>Minhas reservas</h1>
                         <tbody>
                             {reservas.map(reserva =>
-                                <tr key={reserva.id}>
-                                    <td>{reserva.mesa_id}</td>
+                                <tr className={styles.tabelaReserva} key={reserva.id}>
+                                    <td className={styles.textoDataReserva}>{reserva.data.split('T')[0]}</td>
+                                    <div className={styles.mesaeReserva}>
+                                        <td className={styles.textoReserva}>Mesa {reserva.mesa_id}</td>
+                                        <p className={styles.textoDivisao}>-</p>
+                                        <td className={styles.textoReserva}>Reserva {reserva.id}</td>
+                                    </div>
                                 </tr>
                             )}
                         </tbody>

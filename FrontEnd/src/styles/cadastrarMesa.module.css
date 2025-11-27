@@ -1,0 +1,72 @@
+.container {
+    margin-left: 10%;
+}
+
+.titulo {
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 61px;
+    color: #FFFFFF;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 538px;
+    padding: 40px 25px;
+    border: 1px solid #ffffffca;
+    border-radius: 2px;
+}
+
+.input {
+    box-sizing: border-box;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    height: 50px;
+    width: 100%;
+    border: 1px solid #ffffffca;
+    background-color: transparent;
+    border-radius: 2px;
+    color: #ffffffca;
+    
+}
+
+.input::placeholder {
+    color: #ffffffca;
+    text-transform: uppercase;
+    font-family: "Proza Libre", sans-serif;
+}
+
+.error {
+    color: #ffffff;
+    margin: -10px 40px 15px 40px;
+    font-size: 12px;
+    font-family: "Proza Libre", sans-serif;
+    font-size: 12px;
+}
+
+.buttonCadastrarMesa {
+    box-sizing: border-box;
+    width: 525px;
+    height: 40px;
+    background: linear-gradient(90.88deg, rgba(170, 52, 13, 0.85) -4.95%, rgba(170, 52, 13, 0) 105.66%);
+    border: 0.5px solid #B62D00;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: "Proza Libre", sans-serif;
+    cursor: pointer;
+    color: #ffffffca;
+}
+
+.buttonCadastrarMesa:hover {
+    background: linear-gradient(90.88deg, rgb(170, 52, 13) -4.95%, rgba(170, 52, 13, 0.256) 105.66%);
+}
+
+.borderButton {
+    border: 0.5px solid #ffffffca;
+    padding: 5px;
+    border-radius: 2px;
+}
