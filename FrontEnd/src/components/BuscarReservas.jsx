@@ -9,7 +9,7 @@ export default function BuscarReservas({ reservas }) {
             <table>
                 {reservas.map(reserva =>
                     <tr className={styles.tabelaReserva} key={reserva.id}>
-                        <td className={styles.textoDataReserva}>{reserva.data.split('T')[0]}</td>
+                        <td className={styles.textoDataReserva}>{reserva.data.split('T')[0] + " " + reserva.data.split('T')[1].split('.')[0]}</td>
                         <div className={styles.mesaeReserva}>
                             <td className={styles.textoReserva}>Mesa {reserva.mesa_id}</td>
                             <p className={styles.textoDivisao}>-</p>

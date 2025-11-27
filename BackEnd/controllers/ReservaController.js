@@ -26,7 +26,7 @@ class ReservaController {
             });
         }
 
-        const dataISO = new Date(`${data}T${horario}:00`).toISOString();
+        const dataISO = `${data}T${horario}:00.000Z`;
 
         const reserva = await client.reserva.create({
             data: {
