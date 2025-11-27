@@ -41,7 +41,7 @@
     align-items: center;
     padding: 5px;
     padding-left: 10px;
-    width: 250px;
+    width: 200px;
     height: 40px;
     border: 1px solid #ffffffca;
     background-color: #00000000;
@@ -55,9 +55,15 @@
     cursor: pointer;
 }
 
+.select {
+    position: relative;
+    width: 200px;
+    margin: 0px 20px;
+}
+
 .selectWrapper {
     position: relative;
-    width: 250px;
+    width: 200px;
     margin: 0px 20px;
 }
 
@@ -88,7 +94,7 @@
 
 .selectWrapperDate {
     position: relative;
-    width: 250px;
+    width: 200px;
     margin: 0px 20px;
 }
 
@@ -132,4 +138,17 @@
     border-radius: 2px;
     height: 29px;
     margin-left: 20px;
+}
+
+.error {
+    color: #ffffff;
+    margin: 5px 40px 0 40px;
+    font-size: 12px;
+    font-family: "Proza Libre", sans-serif;
+    font-size: 12px;
+}
+
+.errors {
+    display: flex;
+    flex-direction: column;
 }

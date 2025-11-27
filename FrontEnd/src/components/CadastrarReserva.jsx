@@ -71,52 +71,71 @@ export default function CadastrarReserva() {
             <div className={styles.line}></div>
             <h1 className={styles.titleReservation}>Reserve uma mesa</h1>
             <form className={styles.form} onSubmit={handleSubmit(handleCadastrar)}>
-                <div className={styles.selectWrapper}>
-                    <select className={styles.input}
-                        {...register('mesa_id', { required: true })}
-                    >
-                        {
-                            mesas.map((mesa) =>
-                                <option key={mesa.id} value={mesa.id}>
-                                    Mesa {mesa.id}
-                                </option>
-                            )
-                        }
-                    </select>
-                    <div>{errors.mesa_id?.message}</div>
+                <div className={styles.errors}>
+                    <div className={styles.selectWrapper}>
+                        <select className={styles.input}
+                            {...register('mesa_id', { required: true })}
+                        >
+                            {
+                                mesas.map((mesa) =>
+                                    <option key={mesa.id} value={mesa.id}>
+                                        Mesa {mesa.id}
+                                    </option>
+                                )
+                            }
+                        </select>
+                    </div>
+                    <div className={styles.error}>{errors.mesa_id?.message}</div>
                 </div>
-                <input className={styles.input}
-                    {...register('contato', { required: true })}
-                    placeholder='(11) 99999-9999'
-                />
-                <div>{errors.contato?.message}</div>
-                <div className={styles.selectWrapperDate}>
-                    <input className={styles.input}
-                        {...register('dataReserva', { required: true })}
-                        type='date'
-                    />
-                    <div>{errors.dataReserva?.message}</div>
+
+                <div className={styles.errors}>
+                    <div className={styles.select}>
+                        <input className={styles.input}
+                            {...register('contato', { required: true })}
+                            placeholder='(11) 99999-9999'
+                        />
+                    </div>
+                    <div className={styles.error}>{errors.contato?.message}</div>
                 </div>
-                <input className={styles.input}
-                    {...register('horarioReserva', { required: true })}
-                    type='time'
-                />
-                <div>{errors.horarioReserva?.message}</div>
-                <div className={styles.selectWrapper}>
-                    <select
-                        className={styles.input}
-                        {...register('n_pessoas', { required: true })}
-                    >
-                        {mesaSelecionada &&
-                            Array.from({ length: mesaSelecionada.n_lugares }).map((_, i) => (
-                                <option key={i} value={i + 1}>
-                                    {i + 1} pessoa{i > 0 ? 's' : ''}
-                                </option>
-                            ))
-                        }
-                    </select>
-                    <div>{errors.n_pessoas?.message}</div>
+
+                <div className={styles.errors}>
+                    <div className={styles.selectWrapperDate}>
+                        <input className={styles.input}
+                            {...register('dataReserva', { required: true })}
+                            type='date'
+                        />
+                    </div>
+                    <div className={styles.error}>{errors.dataReserva?.message}</div>
                 </div>
+
+                <div className={styles.errors}>
+                    <div className={styles.selectWrapper}>
+                        <input className={styles.input}
+                            {...register('horarioReserva', { required: true })}
+                            type='time'
+                        />
+                    </div>
+                    <div className={styles.error}>{errors.horarioReserva?.message}</div>
+                </div>
+
+                <div className={styles.errors}>
+                    <div className={styles.selectWrapper}>
+                        <select
+                            className={styles.input}
+                            {...register('n_pessoas', { required: true })}
+                        >
+                            {mesaSelecionada &&
+                                Array.from({ length: mesaSelecionada.n_lugares }).map((_, i) => (
+                                    <option key={i} value={i + 1}>
+                                        {i + 1} pessoa{i > 0 ? 's' : ''}
+                                    </option>
+                                ))
+                            }
+                        </select>
+                    </div>
+                    <div className={styles.error}>{errors.n_pessoas?.message}</div>
+                </div>
+
                 <div className={styles.borderButton}>
                     <button type='submit' className={styles.buttonReservation}>
                         Reservar
