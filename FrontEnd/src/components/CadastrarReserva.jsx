@@ -6,7 +6,7 @@ import bgImg from '../assets/background-fire.png';
 import styles from '../styles/cadastrarReserva.module.css';
 
 export default function CadastrarReserva() {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm({
+    const { register, handleSubmit, watch, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schemaCadastrarReserva)
     });
     const [mesas, setMesas] = useState();
@@ -39,6 +39,7 @@ export default function CadastrarReserva() {
             }
 
             alert(responseBody.message);
+            reset();
         } catch (err) {
             alert(err);
         }
@@ -48,7 +49,7 @@ export default function CadastrarReserva() {
         const buscar = async () => {
             try {
                 const response = await fetch(`${import.meta.env.VITE_API_URL}/mesas`);
-                const responseBody = await res.json();
+                const responseBody = await response.json();
                 setMesas(responseBody.mesas);
             } catch (err) {
                 console.log(err);
@@ -109,7 +110,7 @@ export default function CadastrarReserva() {
                 </div>
 
                 <div className={styles.errors}>
-                    <div className={styles.selectWrapper}>
+                    <div className={styles.selectWrapperDate}>
                         <input className={styles.input}
                             {...register('horarioReserva', { required: true })}
                             type='time'

@@ -25,7 +25,7 @@ export default function LoginUsuario() {
                 })
             });
 
-            const responseBody = await res.json();
+            const responseBody = await response.json();
 
             if (responseBody.error) {
                 throw new Error(responseBody.message);
