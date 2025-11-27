@@ -50,12 +50,12 @@ export default function LoginUsuario() {
                     {...register('email', { required: true })}
                     placeholder='E-mail: '
                 />
-                <div>{errors.email?.message}</div>
+                <div className={styles.error}>{errors.email?.message}</div>
                 <input className={styles.input}
                     {...register('senha', { required: true })}
                     placeholder='Senha: '
                 />
-                <div>{errors.senha?.message}</div>
+                <div className={styles.error}>{errors.senha?.message}</div>
                 <div className={styles.borderButton}>
                     <button className={styles.buttonLoginRegister} type='submit'>Login</button>
                 </div>
