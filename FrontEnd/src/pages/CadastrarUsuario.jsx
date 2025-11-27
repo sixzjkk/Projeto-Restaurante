@@ -12,7 +12,7 @@ export default function CadastrarUsuario() {
 
     const navigate = useNavigate();
 
-    const handleCadastrar = async (data) => {
+    const handleCadastrarUsuario = async (data) => {
         const { nome, sobrenome, email, senha, uf, cidade, bairro, rua, numeroCasa } = data;
 
         try {
@@ -54,7 +54,7 @@ export default function CadastrarUsuario() {
             <div className={styles.lineRegister}></div>
             <h1 className={styles.title}>Criar Conta</h1>
 
-            <form className={styles.form} onSubmit={handleSubmit(handleCadastrar)}>
+            <form className={styles.form} onSubmit={handleSubmit(handleCadastrarUsuario)}>
 
                 <div className={styles.row}>
                     <input className={styles.input}

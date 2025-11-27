@@ -1,26 +1,27 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import { schemaCadastrarMesa } from '../validation/schemaValidacaoMesa';
 
 export default function CadastrarMesa() {
-    const { register, formState: {errors}} = useForm({
-        
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+        resolver: yupResolver(schemaCadastrarMesa)
     });
 
-    const handleCadastrarMesa = async (event) => {
-        event.preventDefault();
+    const handleCadastrarMesa = async (data) => {
+        const { codigo, n_lugares } = data;
 
         const token = localStorage.getItem('authorization');
 
         try {
             const res = await fetch(`${import.meta.env.VITE_API_URL}/mesas/novo`, {
                 method: 'POST',
-                headers: { 
+                headers: {
                     'Content-Type': 'application/json',
-                    'authorization': `Bearer ${token}` 
+                    'authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     codigo,
-                    n_lugares: lugares,
-                    status
+                    n_lugares
                 })
             });
 
@@ -30,6 +31,7 @@ export default function CadastrarMesa() {
                 throw new Error(data.message);
             }
 
+            reset();
             alert(data.message);
         } catch (err) {
             alert(err);
@@ -42,9 +44,17 @@ export default function CadastrarMesa() {
                 <h1>
                     Cadastrar Mesas
                 </h1>
-                <input placeholder='Código' onChange={event => setCodigo(event.target.value)}/>
-                <input placeholder='Capacidade' type='number' onChange={event => setLugares(event.target.value)}/>
-                <button onClick={handleCadastrarMesa}>Cadastrar</button>
+                <input className=''
+                    {...register('codigo')}
+                    placeholder='Código: '
+                />
+                <div>{errors.codigo?.message}</div>
+                <input
+                    {...register('n_lugares')}
+                    placeholder='Capacidade: '
+                />
+                <div>{errors.n_lugares?.message}</div>
+                <button onClick={handleSubmit(handleCadastrarMesa)}>Cadastrar</button>
             </form>
         </div>
     );

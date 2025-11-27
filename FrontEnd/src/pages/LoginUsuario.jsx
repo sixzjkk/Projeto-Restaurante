@@ -12,7 +12,7 @@ export default function LoginUsuario() {
 
     const navigate = useNavigate();
 
-    const handleLogin = async (data) => {
+    const handleLoginUsuario = async (data) => {
         const { email, senha } = data;
 
         try {
@@ -45,7 +45,7 @@ export default function LoginUsuario() {
             <Link className={styles.voltar} to='/'>ᐸ</Link>
             <div className={styles.line}></div>
             <h1 className={styles.title}>Login</h1>
-            <form className={styles.form} onSubmit={handleSubmit(handleLogin)}>
+            <form className={styles.form} onSubmit={handleSubmit(handleLoginUsuario)}>
                 <input className={styles.input}
                     {...register('email', { required: true })}
                     placeholder='E-mail: '

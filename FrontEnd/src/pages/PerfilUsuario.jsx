@@ -14,7 +14,7 @@ export default function PerfilUsuario() {
 
     const navigate = useNavigate();
 
-    const handleAtualizar = async (data) => {
+    const handleAtualizarUsuario = async (data) => {
         const { nome, sobrenome, email, uf, cidade, bairro, rua, numeroCasa } = data;
 
         try {
@@ -67,8 +67,6 @@ export default function PerfilUsuario() {
                     throw new Error(data.message);
                 }
 
-                console.log(data.usuario.tipo)
-
                 if (data.usuario.tipo == 'adm') {
                     setIsAdm(true);
                 }
@@ -98,7 +96,7 @@ export default function PerfilUsuario() {
                 <div>
                     {
                         editando ?
-                            <form className={styles.infoEditar} onSubmit={handleSubmit(handleAtualizar)}>
+                            <form className={styles.infoEditar} onSubmit={handleSubmit(handleAtualizarUsuario)}>
                                 <input className={styles.input}
                                     {...register('nome', { required: true })}
                                     placeholder='Nome: '

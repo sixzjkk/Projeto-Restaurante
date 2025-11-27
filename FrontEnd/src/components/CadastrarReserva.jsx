@@ -11,7 +11,7 @@ export default function CadastrarReserva() {
     });
     const [mesas, setMesas] = useState();
 
-    const handleCadastrar = async (formData) => {
+    const handleCadastrarReserva = async (formData) => {
         const { mesa_id, contato, dataReserva, horarioReserva, n_pessoas } = formData;
 
         try {
@@ -70,7 +70,7 @@ export default function CadastrarReserva() {
         <div id='cadastrarReserva' className={styles.background} style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${bgImg})` }}>
             <div className={styles.line}></div>
             <h1 className={styles.titleReservation}>Reserve uma mesa</h1>
-            <form className={styles.form} onSubmit={handleSubmit(handleCadastrar)}>
+            <form className={styles.form} onSubmit={handleSubmit(handleCadastrarReserva)}>
                 <div className={styles.errors}>
                     <div className={styles.selectWrapper}>
                         <select className={styles.input}
