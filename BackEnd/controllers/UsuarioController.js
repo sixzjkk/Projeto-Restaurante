@@ -19,6 +19,9 @@ class UsuarioController {
         const usuario = await client.usuario.findUnique({
             where: {
                 id: req.usuarioId
+            },
+            include: {
+                reservas: true
             }
         });
 

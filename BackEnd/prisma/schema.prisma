@@ -41,6 +41,7 @@ model Reserva {
   usuario_id Int
   mesa Mesa @relation(fields: [mesa_id], references: [id])
   mesa_id Int
+  contato String
   data DateTime
   n_pessoas Int
   status Boolean @default(true)

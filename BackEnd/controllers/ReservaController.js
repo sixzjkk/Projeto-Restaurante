@@ -13,12 +13,13 @@ class ReservaController {
             });
         }
 
-        const dataISO = new Date(data + "T00:00:00").toISOString();
+        const dataISO = new Date(`${data}T${horario}:00`).toISOString();
 
         const reserva = await client.reserva.create({
             data: {
                 usuario_id: req.usuarioId,
                 mesa_id: parseInt(mesa_id),
+                contato,
                 data: dataISO,
                 n_pessoas: parseInt(n_pessoas)
             }

@@ -43,7 +43,7 @@ body {
     color: #D0CECC;
 }
 
-.buttonEditar, .buttonEditarSalvar {
+.buttonEditar, .buttonEditarSalvar, .buttonSair {
     box-sizing: border-box;
     width: 324px;
     height: 40px;
@@ -56,11 +56,11 @@ body {
 }
 
 
-.buttonEditar:hover {
+.buttonEditar:hover, .buttonSair:hover {
     background: linear-gradient(90.88deg, rgba(170, 52, 13, 0.247) -4.95%, rgba(170, 52, 13, 0.115) 105.66%);
 }
 
-.buttonEditar {
+.buttonEditar, .buttonSair {
     background: linear-gradient(90.88deg, rgba(170, 52, 13, 0.032) -4.95%, rgba(170, 52, 13, 0) 105.66%);
 }
 

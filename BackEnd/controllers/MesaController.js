@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 const client = new PrismaClient();
 
 class MesaController {
-     static async buscarMesas(req, res) {
+     static async buscarTodasMesas(req, res) {
         const mesas = await client.mesa.findMany({});
 
         return res.status(200).json({
