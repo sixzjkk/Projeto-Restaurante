@@ -1,3 +1,4 @@
+import CadastrarMesa from '../components/CadastrarMesa';
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
@@ -6,6 +7,7 @@ import styles from '../styles/userPerfil.module.css';
 
 export default function PerfilUsuario() {
     const { register, handleSubmit, reset, watch } = useForm();
+    const [isAdm, setIsAdm] = useState(false);
     const [editando, setEditando] = useState(false);
     const [carregando, setCarregando] = useState(true);
     const [reservas, setReservas] = useState([]);
@@ -63,6 +65,12 @@ export default function PerfilUsuario() {
 
                 if (data.error) {
                     throw new Error(data.message);
+                }
+
+                console.log(data.usuario.tipo)
+
+                if (data.usuario.tipo == 'adm') {
+                    setIsAdm(true);
                 }
 
                 reset(data.usuario);
@@ -154,15 +162,20 @@ export default function PerfilUsuario() {
                     </div>
                 </div>
             </div>
-            <table>
-                <tbody>
-                    {reservas.map(reserva =>
-                        <tr key={reserva.id}>
-                            <td>{reserva.mesa_id}</td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>
+            {
+                !isAdm ?
+                    <table>
+                        <tbody>
+                            {reservas.map(reserva =>
+                                <tr key={reserva.id}>
+                                    <td>{reserva.mesa_id}</td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                    :
+                    <CadastrarMesa />
+            }
         </div >
     );
 }

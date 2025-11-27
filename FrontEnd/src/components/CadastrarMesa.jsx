@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 export default function CadastrarMesa() {
-    const [codigo, setCodigo] = useState('');
-    const [lugares, setLugares] = useState(0);
-    const [status, setStatus] = useState(true);
+    const { register, formState: {errors}} = useForm({
+        
+    });
 
     const handleCadastrarMesa = async (event) => {
         event.preventDefault();
